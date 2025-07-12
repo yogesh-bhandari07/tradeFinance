@@ -1,0 +1,104 @@
+// === Homepage.jsx ===
+import BadgeNotification from "./components/badge";
+import { Maintxt } from "./components/maintxt";
+import Hero from "./components/Hero";
+import SidebarAdDownload from "./components/sidebardownload";
+import { SubscribeCard } from "./components/subscribecard";
+import Contributors from "./components/contrubutons";
+import ArticleInfo from "./components/articleinfo";
+import Contents from "./components/contentcart";
+import RelatedArticles from "./components/article";
+import { IndeterminateProgressBar } from "./components/progressbar";
+
+export default function Homepage() {
+  return (
+    <div className="main">
+        <div className="sticky top-0 z-50">
+        <IndeterminateProgressBar />
+      </div>
+      <Hero />
+      <div className="main-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5">
+        <div className="grid lg:grid-cols-4 gap-6">
+          <div className="lg:col-span-3">
+            <div className="mb-8">
+              <BadgeNotification />
+            </div>
+
+            <div className="grid lg:grid-cols-4 gap-4">
+              {/* Sticky sidebar that scrolls with body */}
+              <div className="lg:col-span-1 flex flex-col gap-4 sticky top-[100px] h-fit">
+                <Contents />
+                <SubscribeCard />
+              </div>
+
+              {/* Maintxt scrolls with body, but long content naturally scrolls */}
+              <div className="lg:col-span-3">
+                <Maintxt />
+              </div>
+            </div>
+
+            <RelatedArticles />
+          </div>
+
+    <div className="lg:col-span-1 flex flex-col gap-4 sticky top-[100px] h-fit mb-3">
+  <ArticleInfo />
+  <Contributors />
+  <SidebarAdDownload />
+</div>
+
+          {/* <div className="lg:col-span-1 flex flex-col gap-4">
+            <ArticleInfo />
+            <Contributors />
+            <SidebarAdDownload />
+          </div> */}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+
+
+
+
+// export default function Homepage() {
+//   return (
+//     <div className="main ">
+//       <Hero/>
+//       <div className="main-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5">
+//         <div className="grid lg:grid-cols-4 gap-6">
+//           <div className="lg:col-span-3">
+//             <div className="mb-8">
+//                   <BadgeNotification/>
+
+//             </div>
+              
+//             <div className="grid lg:grid-cols-4 gap-4">
+//               <div className="lg:col-span-1 flex flex-col gap-4">
+//                    <Contents/>
+//                 <SubscribeCard/>
+//               </div>
+//               <div className="lg:col-span-3">
+
+
+//                 <Maintxt/>
+//               </div>
+//             </div>
+//             <RelatedArticles/>
+//           </div>
+//           <div className="lg:col-span-1 flex flex-col gap-4">
+//         <ArticleInfo/>
+//         <Contributors/>
+//         <SidebarAdDownload/>
+
+//           </div>
+//         </div>
+
+//       <section className="main-left">
+
+//       </section>
+//       </div>
+//     </div>
+//   );
+// }
