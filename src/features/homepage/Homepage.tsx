@@ -9,6 +9,7 @@ import ArticleInfo from "./components/articleinfo";
 import Contents from "./components/contentcart";
 import RelatedArticles from "./components/article";
 import { IndeterminateProgressBar } from "./components/progressbar";
+import CTA from "./components/cta";
 
 export default function Homepage() {
   return (
@@ -19,17 +20,18 @@ export default function Homepage() {
       <Hero />
       <div className="main-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5">
         <div className="grid lg:grid-cols-4 gap-6">
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-3 mb-3">
             <div className="mb-8">
               <BadgeNotification />
             </div>
 
             <div className="grid lg:grid-cols-4 gap-4">
               {/* Sticky sidebar that scrolls with body */}
-              <div className="lg:col-span-1 flex flex-col gap-4 sticky top-[100px] h-fit">
-                <Contents />
-                <SubscribeCard />
-              </div>
+           <div className="hidden lg:flex lg:col-span-1 flex-col gap-4 sticky top-[100px] h-fit">
+            <Contents />
+            <SubscribeCard />
+          </div>
+
 
               {/* Maintxt scrolls with body, but long content naturally scrolls */}
               <div className="lg:col-span-3">
@@ -38,6 +40,7 @@ export default function Homepage() {
             </div>
 
             <RelatedArticles />
+            <CTA/>
           </div>
 
     <div className="lg:col-span-1 flex flex-col gap-4 sticky top-[100px] h-fit mb-3">
