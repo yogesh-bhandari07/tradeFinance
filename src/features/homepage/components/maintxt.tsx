@@ -2,10 +2,10 @@
 
 export function Maintxt() {
     return (
-        <section className="lg:col-span-3 max-w-3xl">
-            <div className="bg-white rounded-lg border p-6 prose prose-base max-w-none">
-
+<section className="w-full">
+  <div className="w-full overflow-x-auto bg-white rounded-lg border p-6">
                 {/* Introduction */}
+
                 <section id="Introduction" className="mb-6">
                     <h2 className="text-xl font-bold text-black mb-3">Introduction</h2>
                     <p className="text-gray-700 leading-relaxed mb-3">
@@ -24,7 +24,6 @@ export function Maintxt() {
                         The shift towards digital currencies is not merely technological—it represents a fundamental change in monetary policy, financial sovereignty, and international economic relationships. For trade finance practitioners, understanding these changes is crucial for navigating the evolving landscape and positioning their institutions for success in the digital era.
                     </p>
                 </section>
-
                 {/* Regulatory Landscape */}
                 <section id="Current Regulatory Landscape" className="mb-6">
                     <h2 className="text-xl font-bold text-black mb-3">Current Regulatory Landscape</h2>

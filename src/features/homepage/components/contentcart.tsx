@@ -83,7 +83,7 @@ useEffect(() => {
 
             >
               <div className="flex items-center gap-2">
-                <span className="text-xs opacity-60 font-medium min-w-[20px]">{index + 1}.</span>
+                <span className="text-xs opacity-60 font-medium ">{index + 1}.</span>
                 <span className="font-medium">{title}</span>
               </div>
             </a>
