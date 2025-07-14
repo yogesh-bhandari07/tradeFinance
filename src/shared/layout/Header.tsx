@@ -13,7 +13,7 @@ const dropdownContent = {
         <p className="mt-2 text-[#4b5563]">Your structured, evergreen education and insight layer</p>
       </div>
       <button className="p-2 rounded-lg transition-colors hover:bg-[#f3f4f6]">
-        <svg className="h-6 w-6 text-[#4b5563]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <svg className="h-6 w-6 text-[#4b5563]" fill="none"  stroke-width="2" viewBox="0 0 24 24">
           <path d="M18 6 6 18"></path>
           <path d="m6 6 12 12"></path>
         </svg>
