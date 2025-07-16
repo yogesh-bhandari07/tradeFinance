@@ -11,11 +11,11 @@ export default function Home() {
     const token = localStorage.getItem("authToken");
 
     if (token) {
-      router.replace("/dashboard");
+      router.replace("/homepage");
     } else {
       router.replace("/login");
     }
   }, []);
 
-  return null; // or a loading spinner
+  return null; 
 }
