@@ -1,5 +1,21 @@
-import Homepage from "@/features/homepage/Homepage";
+// app/page.tsx (client component)
+'use client';
+
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-  return <Homepage />;
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = localStorage.getItem("authToken");
+
+    if (token) {
+      router.replace("/dashboard");
+    } else {
+      router.replace("/login");
+    }
+  }, []);
+
+  return null; // or a loading spinner
 }
