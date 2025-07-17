@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const isAuthPage = pathname === '/login';
+  const isAuthPage = pathname === '/login' || pathname==='/signup';
   return (
     <div className="flex flex-col min-h-screen">
       {!isAuthPage && <Header />}

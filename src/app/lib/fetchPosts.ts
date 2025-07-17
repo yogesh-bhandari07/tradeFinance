@@ -2,66 +2,60 @@ const endpoint = 'https://sproutsagesolutions.in/tradetreasurypayments/tradetrea
 
 
 const POSTS_QUERY = `
-  query GetPosts($first: Int, $after: String) {
-    posts(first: $first, after: $after) {
-      pageInfo {
-        hasNextPage
-        endCursor
-      }
-      nodes {
-        id
-        databaseId
-        title
-        slug
-        uri
-        content
-        excerpt
-        date
-        categories {
-          edges {
-            node {
-              id
-              name
-              slug
-              uri
-            }
-          }
-        }
-        tags {
-          nodes {
+ query GetSinglePost($slug: ID!) {
+    post(id: $slug, idType: SLUG) {
+      id
+      databaseId
+      title
+      slug
+      uri
+      content
+      excerpt
+      date
+      categories {
+        edges {
+          node {
             id
             name
             slug
             uri
           }
         }
-        featuredImage {
-          node {
-            altText
-            mediaDetails {
-              sizes {
-                name
-                sourceUrl
-              }
+      }
+      tags {
+        nodes {
+          id
+          name
+          slug
+          uri
+        }
+      }
+      featuredImage {
+        node {
+          altText
+          mediaDetails {
+            sizes {
+              name
+              sourceUrl
             }
           }
         }
-        singlePostPage {
-          downloadPdfButton
-          downloadPdfLink
-          downloadPdfContent
-        }
-        author {
-          node {
-            id
-            databaseId
-            name
-            firstName
-            lastName
-            description
-            avatar {
-              url
-            }
+      }
+      singlePostPage {
+        downloadPdfButton
+        downloadPdfLink
+        downloadPdfContent
+      }
+      author {
+        node {
+          id
+          databaseId
+          name
+          firstName
+          lastName
+          description
+          avatar {
+            url
           }
         }
       }
@@ -69,28 +63,18 @@ const POSTS_QUERY = `
   }
 `;
 
-export async function fetchPosts({
-
-    limit = 10,
-    after = null,
-}: {
-    limit?: number;
-    after?: string | null;
-}) {
-    const token=  localStorage.getItem('authToken');
+export async function fetchPosts(slug:string) {
+    // const token=  localStorage.getItem('authToken');
     const res = await fetch(endpoint, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
-      Authorization: `Bearer ${token}`,
+      // Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       query: POSTS_QUERY,
-      variables: {
-        first: limit,
-        after,
-      },
+      variables: { slug },
     }),
   });
 
@@ -102,5 +86,5 @@ export async function fetchPosts({
     throw new Error(json.errors[0].message || 'Error fetching posts');
   }
 
-  return json.data.posts;
+  return json.data.post;
 }

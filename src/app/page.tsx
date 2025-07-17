@@ -13,7 +13,7 @@ export default function Home() {
     if (token) {
       router.replace("/homepage");
     } else {
-      router.replace("/login");
+      router.replace("/homepage");
     }
   }, []);
 

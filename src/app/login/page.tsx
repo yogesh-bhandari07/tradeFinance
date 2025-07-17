@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useState } from "react";
 import { loginUser } from "../lib/auth";
@@ -7,16 +7,22 @@ import { useRouter } from "next/navigation";
 export default function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-
-    const user = await loginUser(username, password);
-    console.log('Logged in user:', user);
-   router.replace("/homepage"); 
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const user = await loginUser(username, password);
+      console.log(user);
+      router.replace("/homepage");
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   };
-
 
   return (
     <div className="min-h-screen relative bg-white flex items-center justify-center px-4 py-12 sm:py-20 overflow-hidden">
@@ -69,12 +75,18 @@ export default function LoginPage() {
         <img
           src="https://trade-treasury-payments.lovable.app/lovable-uploads/71ee7b01-b2fa-4d85-8487-6c164311c1dd.png"
           alt="Trade Treasury Logo"
-          className="h-10 w-auto object-contain"
+          className="h-15 w-auto object-contain"
         />
       </div>
 
       {/* === Centered Card === */}
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 overflow-hidden z-10">
+      <div
+        className="
+  bg-white rounded-2xl shadow-2xl w-full max-w-4xl overflow-hidden z-10
+  grid grid-cols-1 md:grid-cols-2
+  max-[1000px]:flex max-[1000px]:flex-col max-[1000px]:items-center max-[1000px]:max-w-md max-[1000px]:mx-auto
+"
+      >
         {/* Left */}
         {/* Left Section - Hidden below 1000px */}
         <div className="bg-[#f5f3f0] p-6 sm:p-10 flex flex-col items-center justify-center text-center max-[1000px]:hidden">
@@ -93,12 +105,17 @@ export default function LoginPage() {
         </div>
 
         {/* Right */}
-        <div className="p-6 sm:p-10 flex items-center justify-center max-[1000px]:justify-center">
-          <form onSubmit={handleSubmit} className="w-full max-w-sm space-y-5">
+        {/* Right */}
+        <div className="p-6 sm:p-10 flex items-center justify-center max-[1000px]:justify-center max-[1000px]:w-full">
+          <form
+            onSubmit={handleSubmit}
+            className="w-full max-w-sm space-y-5 mx-auto"
+          >
             <h3 className="text-lg sm:text-xl font-semibold text-gray-800 text-center">
               Login to Your Account
             </h3>
 
+            {/* Username */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Username
@@ -106,13 +123,14 @@ export default function LoginPage() {
               <input
                 type="text"
                 className="w-full border border-gray-300 rounded-md p-3 text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                placeholder="you@example.com"
+                placeholder="Enter your username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
               />
             </div>
 
+            {/* Password */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Password
@@ -127,12 +145,39 @@ export default function LoginPage() {
               />
             </div>
 
+            {/* Submit */}
             <button
               type="submit"
               className="relative w-full overflow-hidden rounded-md py-3 font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+              disabled={loading}
             >
               <span className="absolute inset-0 bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-400 hover:from-orange-600 hover:via-amber-600 hover:to-yellow-500 transition-all" />
-              <span className="relative z-10">Sign In</span>
+              <span className="relative z-10">
+                {loading ? (
+                  <svg
+                    className="animate-spin h-5 w-5 text-white mx-auto"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                    ></path>
+                  </svg>
+                ) : (
+                  "Sign In"
+                )}
+              </span>
             </button>
           </form>
         </div>

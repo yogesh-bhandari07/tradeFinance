@@ -1,4 +1,11 @@
-export default function Contributors() {
+import { Author } from "../../types/post";
+interface ContributorsProps {
+  author: Author;
+}
+export default function Contributors({ author }: ContributorsProps) {
+    const { name, description, avatar } = author.node;
+
+
   return (
     <div className="rounded-lg border border-gray-200 text-gray-900 bg-white shadow-sm">
       <div className="p-4">
@@ -14,16 +21,17 @@ export default function Contributors() {
           <div className="flex items-start gap-2">
             <span className="relative flex shrink-0 overflow-hidden rounded-full w-8 h-8">
               <img
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+                src={avatar?.url || "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" }
                 alt="Author"
                 className="w-full h-full object-cover"
               />
             </span>
             <div className="flex-1 min-w-0">
-              <h4 className="font-medium text-xs text-gray-900 truncate">Deepesh Patel</h4>
+              <h4 className="font-medium text-xs text-gray-900 truncate">{name}</h4>
               <p className="text-xs text-orange-600 font-medium">TTP Editorial</p>
               <p className="text-xs text-gray-600 mt-1 line-clamp-2">
-                Senior correspondent covering global trade finance and regulatory affairs.
+                {description}
+                {/* Senior correspondent covering global trade finance and regulatory affairs. */}
               </p>
             </div>
           </div>

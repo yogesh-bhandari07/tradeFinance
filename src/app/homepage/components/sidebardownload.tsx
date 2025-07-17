@@ -1,4 +1,11 @@
-export default function SidebarAdDownload() {
+import { SinglePostPage } from "@/app/types/post";
+
+interface singlepost{
+  data:SinglePostPage
+}
+
+export default function SidebarAdDownload({data}:singlepost) {
+  const {downloadPdfButton,downloadPdfLink,downloadPdfContent}=data;
   return (
     <div className="space-y-4">
       {/* Advertisement */}
@@ -15,8 +22,7 @@ export default function SidebarAdDownload() {
       {/* Download PDF */}
       <div className="rounded-lg border border-gray-200 bg-white text-gray-900 shadow-sm">
         <div className="p-4">
-          <button className="inline-flex items-center justify-center gap-2 w-full h-8 px-4 py-2 text-xs font-medium text-white bg-gray-800 hover:bg-gray-700 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
-            {/* Download Icon */}
+          <button className="inline-flex items-center justify-center gap-2 w-full h-8 px-4 py-2 text-xs font-medium text-white bg-gray-800 hover:bg-gray-700 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500" onClick={() => window.open(downloadPdfLink, "_blank")}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-3 h-3 mr-1"
@@ -31,10 +37,10 @@ export default function SidebarAdDownload() {
               <polyline points="7 10 12 15 17 10" />
               <line x1="12" x2="12" y1="15" y2="3" />
             </svg>
-            Download PDF
+            {downloadPdfButton}
           </button>
           <p className="text-xs text-gray-500 text-center mt-2">
-            Save this article for offline reading
+            {downloadPdfContent}
           </p>
         </div>
       </div>
