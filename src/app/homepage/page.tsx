@@ -17,7 +17,7 @@ import { useRouter } from "next/navigation";
 import Skeleton from "@/shared/components/skeleton";
 
 export default function Homepage() {
-  const router = useRouter();
+  // const router = useRouter();
 
   const [posts, setPosts] = useState<Post | null>(null);
 
