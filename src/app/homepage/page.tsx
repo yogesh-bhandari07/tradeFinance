@@ -11,8 +11,14 @@ import Contents from "./components/contentcart";
 import RelatedArticles from "./components/article";
 import CTA from "./components/cta";
 import { Post } from "../types/post";
+import { PostSetting } from "../types/post";
+import { RelatedPosts } from "../types/post";
 import { useEffect, useState } from "react";
-import { fetchPosts } from "../lib/fetchPosts";
+import {
+  fetchPosts,
+  fetchSinglePostSettings,
+  fetchRelatedPosts,
+} from "../lib/postDetail";
 // import { useRouter } from "next/navigation";
 import Skeleton from "@/shared/components/skeleton";
 
@@ -20,6 +26,8 @@ export default function Homepage() {
   // const router = useRouter();
 
   const [posts, setPosts] = useState<Post | null>(null);
+  const [postSetting, setPostSetting] = useState<PostSetting | null>(null);
+  const [relatedPosts, setRelatedPosts] = useState<RelatedPosts | null>(null);
 
   useEffect(() => {
     const load = async () => {
@@ -35,9 +43,54 @@ export default function Homepage() {
       }
     };
 
+    const loadSinglePostSettings = async () => {
+      try {
+        const data = await fetchSinglePostSettings();
+        setPostSetting(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    const loadRelatedPosts = async () => {
+      try {
+        if (posts?.categories?.edges?.length) {
+          const categoryId = posts.categories.edges[0].node.id;
+          const data = await fetchRelatedPosts([categoryId]);
+          setRelatedPosts(data);
+          console.log(data);
+        } else {
+          const data = await fetchRelatedPosts([]);
+          console.log(data);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    loadRelatedPosts();
+    loadSinglePostSettings();
     load();
   }, []);
-  if (!posts) {
+
+  useEffect(() => {
+    const loadRelated = async () => {
+      try {
+        if (!posts) return;
+
+        const categoryIds =
+          posts.categories?.edges?.map((edge) => edge.node.id) || [];
+        const related = await fetchRelatedPosts(categoryIds);
+        setRelatedPosts(related);
+      } catch (error) {
+        console.error("Failed to load related posts:", error);
+      }
+    };
+
+    loadRelated();
+  }, [posts]);
+
+  console.log(relatedPosts);
+  if (!posts || !postSetting || !relatedPosts) {
     return (
       <div className="main max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5">
         <div className="h-64 w-full mb-6">
@@ -81,7 +134,7 @@ export default function Homepage() {
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
               <div className="hidden lg:flex lg:col-span-1 flex-col gap-4 sticky top-[100px] h-fit">
                 <Contents />
-                <SubscribeCard />
+                <SubscribeCard data={postSetting} />
               </div>
 
               <div className="col-span-1 lg:col-span-3">
@@ -89,14 +142,17 @@ export default function Homepage() {
               </div>
             </div>
 
-            <RelatedArticles />
-            <CTA />
+            <RelatedArticles data={relatedPosts} />
+            <CTA data={postSetting} />
           </div>
 
           <div className="col-span-1 flex flex-col gap-4 sticky top-[100px] h-fit mb-3">
             <ArticleInfo />
             <Contributors author={posts.author} />
-            <SidebarAdDownload data={posts.singlePostPage} />
+            <SidebarAdDownload
+              data={posts.singlePostPage}
+              settingData={postSetting}
+            />
           </div>
         </div>
       </div>

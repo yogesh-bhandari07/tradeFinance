@@ -10,7 +10,7 @@ export interface Post {
   categories: CategoryConnection;
   tags: TagConnection;
   featuredImage: FeaturedImage;
-  singlePostPage: SinglePostPage ;
+  singlePostPage: SinglePostPage;
   author: Author;
 }
 
@@ -56,7 +56,7 @@ export interface ImageSize {
 
 export interface SinglePostPage {
   downloadPdfButton: string;
-  downloadPdfLink: string ;
+  downloadPdfLink: string;
   downloadPdfContent: string;
 }
 
@@ -72,4 +72,66 @@ export interface Author {
       url: string;
     };
   };
+}
+
+export interface PostSetting {
+  bottomSectionHeading: string;
+  bottomSectionContent: string;
+  newsletterButton: string;
+  newsletterButtonLink: string;
+  coursesButton: string;
+  coursesButtonLink: string;
+  heading: string;
+  description: string;
+  subscribeFreeButton: string;
+  subscribeFreeButtonLink: string;
+  addScript: string;
+  newsletterHeading: string;
+  newsletterDescription: string;
+  newsletterFormShortcode: string;
+  newsletterBottomContent: string;
+  advertisementScript: string;
+  advertisementImage: PostSettingsAdvertisementImage;
+}
+
+export interface PostSettingsAdvertisementImage {
+  node: {
+    mediaItemUrl: string;
+  };
+}
+
+// ==================== Related Posts ====================
+
+export interface RelatedPostAuthor {
+  node: {
+    name: string;
+  };
+}
+
+export interface RelatedPostFeaturedImage {
+  node: {
+    mediaDetails: {
+      sizes: ImageSize[];
+    };
+  };
+}
+
+export interface RelatedPostCategoryNode {
+  name: string;
+}
+
+export interface RelatedPost {
+  title: string;
+  slug: string;
+  date: string;
+  excerpt: string;
+  author: RelatedPostAuthor;
+  featuredImage: RelatedPostFeaturedImage;
+  categories: {
+    nodes: RelatedPostCategoryNode[];
+  };
+}
+
+export interface RelatedPosts {
+  nodes: RelatedPost[];
 }
