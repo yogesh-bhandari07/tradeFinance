@@ -13,7 +13,7 @@ import CTA from "./components/cta";
 import { Post } from "../types/post";
 import { useEffect, useState } from "react";
 import { fetchPosts } from "../lib/fetchPosts";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import Skeleton from "@/shared/components/skeleton";
 
 export default function Homepage() {
