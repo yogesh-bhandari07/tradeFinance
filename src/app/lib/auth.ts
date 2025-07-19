@@ -9,6 +9,8 @@ export async function loginUser(username: string, password: string) {
           id
           name
           email
+          jwtRefreshToken
+          jwtAuthToken
         }
       }
     }
@@ -32,8 +34,8 @@ export async function loginUser(username: string, password: string) {
   const { authToken, user } = result.data.login;
 
   // Save token to localStorage
-  localStorage.setItem('authToken', authToken);
-  localStorage.setItem('user', JSON.stringify(user)); // optional
+  localStorage.setItem('tauthToken', authToken);
+  localStorage.setItem('user', JSON.stringify(user));
 
   return user;
 }

@@ -18,25 +18,27 @@ import {
   fetchPosts,
   fetchSinglePostSettings,
   fetchRelatedPosts,
+  fetchArticle,
 } from "../lib/postDetail";
-// import { useRouter } from "next/navigation";
 import Skeleton from "@/shared/components/skeleton";
 
 export default function Homepage() {
-  // const router = useRouter();
 
   const [posts, setPosts] = useState<Post | null>(null);
   const [postSetting, setPostSetting] = useState<PostSetting | null>(null);
   const [relatedPosts, setRelatedPosts] = useState<RelatedPosts | null>(null);
+  const [slug, setSlug] = useState("breaking-false-representation-claim-dismissed-in-singapore-bcp-fails-in-us19-million-deceit-case-against-china-aviation-oil");
 
   useEffect(() => {
     const load = async () => {
       try {
-        const data = await fetchPosts(
-          "breaking-false-representation-claim-dismissed-in-singapore-bcp-fails-in-us19-million-deceit-case-against-china-aviation-oil"
-        );
-        console.log(data);
+        const data = await fetchPosts(slug);
         setPosts(data);
+        const decodedId = atob(data.id); 
+         const numericId = decodedId.split(":")[1];
+          const data1= await fetchArticle(numericId);
+          console.log(data1);
+        
       } catch (error) {
         console.log(error);
         // router.replace("/login");
@@ -51,13 +53,15 @@ export default function Homepage() {
         console.log(error);
       }
     };
-
+    
     const loadRelatedPosts = async () => {
       try {
         if (posts?.categories?.edges?.length) {
           const categoryId = posts.categories.edges[0].node.id;
           const data = await fetchRelatedPosts([categoryId]);
           setRelatedPosts(data);
+                window.scrollTo({ top: 0, behavior: "smooth" });
+
           console.log(data);
         } else {
           const data = await fetchRelatedPosts([]);
@@ -70,7 +74,7 @@ export default function Homepage() {
     loadRelatedPosts();
     loadSinglePostSettings();
     load();
-  }, []);
+  }, [slug]);
 
   useEffect(() => {
     const loadRelated = async () => {
@@ -142,7 +146,7 @@ export default function Homepage() {
               </div>
             </div>
 
-            <RelatedArticles data={relatedPosts} />
+      <RelatedArticles data={relatedPosts} onSelectSlug={(newSlug) => setSlug(newSlug)} />
             <CTA data={postSetting} />
           </div>
 

@@ -1,4 +1,4 @@
-import { RelatedPost } from "../types/post";
+
 
 const endpoint =
   "https://sproutsagesolutions.in/tradetreasurypayments/tradetreasurypayments";
@@ -128,6 +128,38 @@ const RELATED_ARTICLES_QUERY = `
   }
 `;
 
+const SAVE_ARTICLE=`
+{
+  "query": "mutation SavePostToFavorites { savePostToFavorites(input: { postId: $POSTID }) { success } }"
+}
+`;
+
+
+
+export async function fetchArticle(id: string) {
+  const token=  localStorage.getItem('tauthToken');
+  const res = await fetch(endpoint, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      query: SAVE_ARTICLE,
+      variables: { id },
+    }),
+  });
+
+  const json = await res.json();
+
+  if (json.errors) {
+    console.error("GraphQL Errors:", json.errors);
+    throw new Error(json.errors[0].message || "Error fetching posts");
+  }
+
+  return json.data.post;
+}
 export async function fetchPosts(slug: string) {
   // const token=  localStorage.getItem('authToken');
   const res = await fetch(endpoint, {

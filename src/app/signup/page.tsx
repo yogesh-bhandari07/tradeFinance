@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { loginUser } from "../lib/auth";
 import { useRouter } from "next/navigation";
+import { SignupUser } from "../lib/signup";
 
 export default function SignUpPage() {
-  const [name, setUsername] = useState("");
+  const [name, setName] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -16,7 +18,7 @@ export default function SignUpPage() {
     e.preventDefault();
     setLoading(true);
     try {
-      const user = await loginUser(name, password);
+      const user = await SignupUser(name,lastname, email,username , password);
       console.log(user);
       router.replace("/homepage");
     } catch (error) {
@@ -25,6 +27,12 @@ export default function SignUpPage() {
       setLoading(false);
     }
   };
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const fullName = e.target.value;
+  const [first, ...rest] = fullName.trim().split(" ");
+  setName(first || "");
+  setLastname(rest.join(" ") || "");
+};
 
   return (
     <div className="min-h-screen relative bg-white flex items-center justify-center px-4 py-12 sm:py-20 overflow-hidden">
@@ -119,8 +127,7 @@ export default function SignUpPage() {
                 type="text"
                 className="w-full border border-gray-300 rounded-md p-3 text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
                 placeholder="Enter your name"
-                value={name}
-                onChange={(e) => setUsername(e.target.value)}
+              onChange={handleNameChange}
                 required
               />
             </div>
@@ -138,6 +145,19 @@ export default function SignUpPage() {
               />
             </div>
 
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Username
+              </label>
+              <input
+                type="text"
+                className="w-full border border-gray-300 rounded-md p-3 text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                placeholder="Enter your username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+              />
+            </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Password

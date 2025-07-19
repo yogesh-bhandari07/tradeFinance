@@ -4,7 +4,9 @@ import { format } from "timeago.js"; // Install this with: npm install timeago.j
 
 interface SinglePostProps {
   data: RelatedPosts;
+  onSelectSlug: (slug: string) => void;
 }
+
 
 function getExcerpt(html: string, wordCount: number = 20): string {
   const div = document.createElement("div");
@@ -13,7 +15,7 @@ function getExcerpt(html: string, wordCount: number = 20): string {
   return text.split(" ").slice(0, wordCount).join(" ") + "...";
 }
 
-export default function RelatedArticles({ data }: SinglePostProps) {
+export default function RelatedArticles({ data, onSelectSlug }: SinglePostProps){
   const { nodes: articles } = data;
 
   return (
@@ -48,6 +50,7 @@ export default function RelatedArticles({ data }: SinglePostProps) {
           return (
             <article
               key={index}
+              onClick={() => onSelectSlug(article.slug)}
               className="rounded-lg bg-white text-gray-900 shadow-sm group hover:shadow-lg transition-shadow cursor-pointer"
             >
               <div className="aspect-video overflow-hidden rounded-t-lg">

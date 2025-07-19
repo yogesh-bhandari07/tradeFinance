@@ -70,7 +70,6 @@ export default function LoginPage() {
         </svg>
       </div>
 
-      {/* === Top Right Logo === */}
       <div className="absolute top-6 left-6 z-10">
         <img
           src="https://trade-treasury-payments.lovable.app/lovable-uploads/71ee7b01-b2fa-4d85-8487-6c164311c1dd.png"
@@ -79,7 +78,6 @@ export default function LoginPage() {
         />
       </div>
 
-      {/* === Centered Card === */}
       <div
         className="
   bg-white rounded-2xl shadow-2xl w-full max-w-4xl overflow-hidden z-10
@@ -87,8 +85,6 @@ export default function LoginPage() {
   max-[1000px]:flex max-[1000px]:flex-col max-[1000px]:items-center max-[1000px]:max-w-md max-[1000px]:mx-auto
 "
       >
-        {/* Left */}
-        {/* Left Section - Hidden below 1000px */}
         <div className="bg-[#f5f3f0] p-6 sm:p-10 flex flex-col items-center justify-center text-center max-[1000px]:hidden">
           <h2 className="text-2xl sm:text-3xl font-serif font-bold text-gray-800 mb-3 sm:mb-4">
             Reimagining Global Trade with CBDCs
@@ -104,8 +100,6 @@ export default function LoginPage() {
           />
         </div>
 
-        {/* Right */}
-        {/* Right */}
         <div className="p-6 sm:p-10 flex items-center justify-center max-[1000px]:justify-center max-[1000px]:w-full">
           <form
             onSubmit={handleSubmit}
@@ -115,7 +109,6 @@ export default function LoginPage() {
               Login to Your Account
             </h3>
 
-            {/* Username */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Username

@@ -32,7 +32,7 @@ export default function CTA({ data }: singlepost) {
         {/* Explore Button */}
         <a
           href={coursesButtonLink ?? "#"}
-          className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium h-10 px-4 py-2 border border-white text-white hover:bg-white hover:text-ttp-charcoal transition-colors flex-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white"
+          className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium h-10 px-4 py-2 border border-white text-white hover:bg-white hover:text-black transition-colors flex-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white"
         >
           {coursesButton ?? "Explore Courses"}
         </a>
