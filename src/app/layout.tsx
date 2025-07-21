@@ -1,4 +1,6 @@
-import "@/app/globals.css";
+// import "@/app/globals.css";
+// import "@/app/globals.css"
+import "../app/globals.css"
 import AppLayout from "@/shared/layout/AppLayout";
 
 export const metadata = {
