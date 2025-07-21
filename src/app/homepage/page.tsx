@@ -119,7 +119,7 @@ export default function Homepage() {
   }
 
   return (
-    <div className="main">
+    <div className="main bg-white">
       <div className="sticky top-0 z-50"></div>
       <Hero
         title={posts.title}
