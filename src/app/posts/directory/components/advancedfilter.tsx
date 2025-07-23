@@ -120,8 +120,8 @@ export const AdvancedFilters: React.FC<AdvancedFiltersProps> = ({
     <Card className="mb-6">
       <CardHeader className="pb-4">
         <div className="flex items-center justify-between">
-          <CardTitle className="flex items-center gap-2 text-gray-300">
-            <Filter className="w-5 h-5" />
+          <CardTitle className="flex items-center gap-2 text-black">
+            <Filter className="w-5 h-5"  />
             Advanced Filters
           </CardTitle>
           <div className="flex items-center gap-2">

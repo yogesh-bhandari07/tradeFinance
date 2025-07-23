@@ -1,5 +1,10 @@
 import React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/shared/components/card";
 import { Button } from "@/shared/components/button";
 import { Badge } from "@/shared/components/badge";
 import {
@@ -53,42 +58,44 @@ export const CompanyComparison: React.FC<CompanyComparisonProps> = ({
     switch (attribute.key) {
       case "type":
         return (
-          <Badge variant="outline" className="text-xs capitalize">
+          <span
+            className="text-xs capitalize rounded px-2 py-1"
+            style={{
+              backgroundColor: "#F3F4F6",
+              color: "#1F2937",
+            }}
+          >
             {String(value).replace("-", " ")}
-          </Badge>
+          </span>
         );
 
       case "regions":
-        return Array.isArray(value) ? (
-          <div className="flex flex-wrap gap-1">
-            {(value as string[]).slice(0, 2).map((region) => (
-              <Badge key={region} variant="outline" className="text-xs">
-                {region}
-              </Badge>
-            ))}
-            {(value as string[]).length > 2 && (
-              <Badge variant="outline" className="text-xs">
-                +{(value as string[]).length - 2}
-              </Badge>
-            )}
-          </div>
-        ) : (
-          "-"
-        );
-
       case "productTypes":
       case "complianceTags":
-        return Array.isArray(value) && (value as string[]).length > 0 ? (
+        return Array.isArray(value) ? (
           <div className="flex flex-wrap gap-1">
             {(value as string[]).slice(0, 2).map((item) => (
-              <Badge key={item} variant="outline" className="text-xs">
+              <span
+                key={item}
+                className="text-xs rounded px-2 py-1"
+                style={{
+                  backgroundColor: "#F3F4F6",
+                  color: "#1F2937",
+                }}
+              >
                 {item}
-              </Badge>
+              </span>
             ))}
             {(value as string[]).length > 2 && (
-              <Badge variant="outline" className="text-xs">
+              <span
+                className="text-xs rounded px-2 py-1"
+                style={{
+                  backgroundColor: "#F3F4F6",
+                  color: "#1F2937",
+                }}
+              >
                 +{(value as string[]).length - 2}
-              </Badge>
+              </span>
             )}
           </div>
         ) : (
@@ -98,13 +105,17 @@ export const CompanyComparison: React.FC<CompanyComparisonProps> = ({
       case "verified":
       case "sponsored":
         return value ? (
-          <CheckCircle className="w-4 h-4 text-green-600" />
+          <CheckCircle className="w-4 h-4" style={{ color: "#16A34A" }} />
         ) : (
-          <X className="w-4 h-4 text-gray-400" />
+          <X className="w-4 h-4" style={{ color: "#9CA3AF" }} />
         );
 
       default:
-        return value ? String(value) : "-";
+        return value ? (
+          <span style={{ color: "#1F2937" }}>{String(value)}</span>
+        ) : (
+          "-"
+        );
     }
   };
 
@@ -112,24 +123,24 @@ export const CompanyComparison: React.FC<CompanyComparisonProps> = ({
     <Card className="w-full">
       <CardHeader>
         <div className="flex items-center justify-between">
-          <CardTitle className="flex items-center gap-2">
-            <Building2 className="w-5 h-5" />
+          <CardTitle className="flex items-center gap-2 text-[#1F2937]">
+            <Building2 className="w-5 h-5" style={{ color: "#6B7280" }} />
             Company Comparison
           </CardTitle>
           <Button variant="ghost" size="sm" onClick={onClose}>
-            <X className="w-4 h-4" />
+            <X className="w-4 h-4" style={{ color: "#6B7280" }} />
           </Button>
         </div>
       </CardHeader>
 
       <CardContent>
         <div className="overflow-x-auto">
-          <Table>
-            <TableHeader>
+          <Table className="min-w-full text-sm text-[#1F2937]">
+            <TableHeader className="bg-white border-b" style={{ borderColor: "#E5E7EB" }}>
               <TableRow>
-                <TableHead className="w-48">Attribute</TableHead>
+                <TableHead className="w-48 text-[#1F2937]">Attribute</TableHead>
                 {companies.map((company) => (
-                  <TableHead key={company.id} className="min-w-64">
+                  <TableHead key={company.id} className="min-w-64 text-[#1F2937]">
                     <div className="flex items-center gap-3">
                       <div className="flex-shrink-0">
                         {company.logo ? (
@@ -139,21 +150,21 @@ export const CompanyComparison: React.FC<CompanyComparisonProps> = ({
                             className="h-8 w-8 object-contain rounded"
                           />
                         ) : (
-                          <div className="h-8 w-8 bg-gray-100 rounded flex items-center justify-center">
-                            <Building2 className="w-4 h-4 text-gray-400" />
+                          <div className="h-8 w-8 bg-[#F3F4F6] rounded flex items-center justify-center">
+                            <Building2 className="w-4 h-4" style={{ color: "#9CA3AF" }} />
                           </div>
                         )}
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-1">
-                          <h4 className="font-medium text-sm truncate">
+                          <h4 className="font-medium text-sm truncate text-[#1F2937]">
                             {company.name}
                           </h4>
                           {company.sponsored && (
-                            <Badge className="bg-ttp-orange text-white text-xs">
-                              <Star className="w-2 h-2 mr-1" />
+                            <span className="text-xs px-2 py-1 rounded flex items-center gap-1" style={{ backgroundColor: "#FF6B00", color: "#FFFFFF" }}>
+                              <Star className="w-3 h-3" />
                               Featured
-                            </Badge>
+                            </span>
                           )}
                         </div>
                         <div className="flex items-center gap-2">
@@ -162,6 +173,7 @@ export const CompanyComparison: React.FC<CompanyComparisonProps> = ({
                             size="sm"
                             onClick={() => onRemoveCompany(company.id)}
                             className="text-xs h-6 px-2"
+                            style={{ color: "#374151" }}
                           >
                             Remove
                           </Button>
@@ -177,7 +189,7 @@ export const CompanyComparison: React.FC<CompanyComparisonProps> = ({
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >
-                                <ExternalLink className="w-3 h-3" />
+                                <ExternalLink className="w-3 h-3 text-[#6B7280]" />
                               </a>
                             </Button>
                           )}
@@ -191,11 +203,11 @@ export const CompanyComparison: React.FC<CompanyComparisonProps> = ({
 
             <TableBody>
               {comparisonAttributes.map((attribute) => (
-                <TableRow key={attribute.key}>
-                  <TableCell className="font-medium">
+                <TableRow key={attribute.key} className="border-t" style={{ borderColor: "#E5E7EB" }}>
+                  <TableCell className="font-medium text-[#1F2937]">
                     <div className="flex items-center gap-2">
                       {attribute.icon && (
-                        <attribute.icon className="w-4 h-4 text-gray-500" />
+                        <attribute.icon className="w-4 h-4" style={{ color: "#6B7280" }} />
                       )}
                       {attribute.label}
                     </div>
@@ -212,7 +224,11 @@ export const CompanyComparison: React.FC<CompanyComparisonProps> = ({
         </div>
 
         <div className="mt-6 flex justify-center">
-          <Button onClick={onClose} variant="outline">
+          <Button
+            onClick={onClose}
+            variant="outline"
+            style={{ color: "#1F2937", borderColor: "#E5E7EB" }}
+          >
             Close Comparison
           </Button>
         </div>

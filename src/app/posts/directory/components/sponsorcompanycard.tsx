@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { Card, CardContent } from "@/app/posts/events/components/card";
 import { Button } from "@/shared/components/button";
 import { Badge } from "@/shared/components/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/components/tabs";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/shared/components/tabs";
 import {
   Dialog,
   DialogContent,
@@ -62,6 +67,7 @@ export const SponsoredCompanyCard: React.FC<SponsoredCompanyCardProps> = ({
         {/* Header Section */}
         <div className="p-6 pb-4">
           <div className="flex items-start gap-4">
+            {/* Logo */}
             <div className="flex-shrink-0">
               {company.logo ? (
                 <img
@@ -76,6 +82,7 @@ export const SponsoredCompanyCard: React.FC<SponsoredCompanyCardProps> = ({
               )}
             </div>
 
+            {/* Details & buttons */}
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2">
                 <Badge className="bg-ttp-orange text-white">
@@ -83,20 +90,108 @@ export const SponsoredCompanyCard: React.FC<SponsoredCompanyCardProps> = ({
                   Featured
                 </Badge>
                 {company.badges?.map((badge) => (
-                  <Badge key={badge.id} variant="outline" className="text-xs">
+                  <Badge
+                    key={badge.id}
+                    variant="outline"
+                    className="text-xs text-black"
+                  >
                     {badge.text}
                   </Badge>
                 ))}
               </div>
+            <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-4">
+  {/* Left Side: Name & Description */}
+  <div className="flex-1">
+    <h3 className="text-2xl font-bold text-gray-900 mb-2">
+      {company.name}
+    </h3>
+    <p className="text-lg text-gray-600 mb-3 leading-relaxed">
+      {company.description}
+    </p>
+  </div>
 
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                {company.name}
-              </h3>
-              <p className="text-lg text-gray-600 mb-3 leading-relaxed">
-                {company.description}
-              </p>
+  {/* Right Side: Buttons (Book a Demo + Visit Website) */}
+  <div className="flex flex-col sm:flex-row gap-3">
+    <Dialog open={leadFormOpen} onOpenChange={setLeadFormOpen}>
+      <DialogTrigger asChild>
+        <Button className="bg-ttp-orange hover:bg-ttp-orange/90">
+          Book a Demo
+          <ArrowRight className="w-4 h-4 ml-2" />
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-md">
+        <DialogHeader>
+          <DialogTitle className="text-black">Get in touch with {company.name}</DialogTitle>
+        </DialogHeader>
+        <form onSubmit={handleLeadSubmit} className="space-y-4">
+          <Input
+  className="border border-gray-300 text-[#3E3D4C] bg-white placeholder:text-gray-400"
+            placeholder="Your name"
+            value={formData.name}
+            onChange={(e) =>
+              setFormData({ ...formData, name: e.target.value })
+            }
+            required
+          />
+          <Input
+            className="border border-gray-300 text-[#3E3D4C] bg-white placeholder:text-gray-400"
 
-              <div className="flex items-center gap-4 text-sm text-gray-500">
+            type="email"
+            placeholder="Your email"
+            value={formData.email}
+            onChange={(e) =>
+              setFormData({ ...formData, email: e.target.value })
+            }
+            required
+          />
+          <Input
+            placeholder="Your company"
+              className=" border border-gray-300 text-[#3E3D4C] bg-white placeholder:text-gray-400"
+
+            value={formData.company}
+            onChange={(e) =>
+
+              setFormData({ ...formData, company: e.target.value })
+            }
+            required
+          />
+          <Textarea
+            className="border border-gray-300 text-[#3E3D4C] bg-white placeholder:text-gray-400"
+
+            placeholder="Tell us about your requirements..."
+            value={formData.message}
+            onChange={(e) =>
+              setFormData({ ...formData, message: e.target.value })
+            }
+            rows={3}
+          />
+          <Button
+            type="submit"
+            className="w-full bg-ttp-orange hover:bg-ttp-orange/90"
+          >
+            Send Message
+          </Button>
+        </form>
+      </DialogContent>
+    </Dialog>
+
+    {company.website && (
+      <Button variant="outline" asChild>
+        <a
+          href={company.website}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <ExternalLink className="w-4 h-4 mr-2" />
+          Visit Website
+        </a>
+      </Button>
+    )}
+  </div>
+</div>
+
+
+              <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
                 {company.headquarters && (
                   <div className="flex items-center gap-1">
                     <MapPin className="w-4 h-4" />
@@ -114,96 +209,40 @@ export const SponsoredCompanyCard: React.FC<SponsoredCompanyCardProps> = ({
                   <span>{company.regions.length} regions</span>
                 </div>
               </div>
-            </div>
 
-            <div className="flex flex-col gap-2">
-              <Dialog open={leadFormOpen} onOpenChange={setLeadFormOpen}>
-                <DialogTrigger asChild>
-                  <Button className="bg-ttp-orange hover:bg-ttp-orange/90">
-                    Book a Demo
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-md">
-                  <DialogHeader>
-                    <DialogTitle>Get in touch with {company.name}</DialogTitle>
-                  </DialogHeader>
-                  <form onSubmit={handleLeadSubmit} className="space-y-4">
-                    <div>
-                      <Input
-                        placeholder="Your name"
-                        value={formData.name}
-                        onChange={(e) =>
-                          setFormData({ ...formData, name: e.target.value })
-                        }
-                        required
-                      />
-                    </div>
-                    <div>
-                      <Input
-                        type="email"
-                        placeholder="Your email"
-                        value={formData.email}
-                        onChange={(e) =>
-                          setFormData({ ...formData, email: e.target.value })
-                        }
-                        required
-                      />
-                    </div>
-                    <div>
-                      <Input
-                        placeholder="Your company"
-                        value={formData.company}
-                        onChange={(e) =>
-                          setFormData({ ...formData, company: e.target.value })
-                        }
-                        required
-                      />
-                    </div>
-                    <div>
-                      <Textarea
-                        placeholder="Tell us about your requirements..."
-                        value={formData.message}
-                        onChange={(e) =>
-                          setFormData({ ...formData, message: e.target.value })
-                        }
-                        rows={3}
-                      />
-                    </div>
-                    <Button
-                      type="submit"
-                      className="w-full bg-ttp-orange hover:bg-ttp-orange/90"
-                    >
-                      Send Message
-                    </Button>
-                  </form>
-                </DialogContent>
-              </Dialog>
-
-              {company.website && (
-                <Button variant="outline" asChild>
-                  <a
-                    href={company.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    Visit Website
-                  </a>
-                </Button>
-              )}
+              
             </div>
           </div>
-        </div>
-
-        {/* Content Tabs */}
-        <div className="px-6 pb-6">
+           <div className="px-6 pb-6 mt-6">
           <Tabs value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className="grid w-full grid-cols-4">
-              <TabsTrigger value="overview">Overview</TabsTrigger>
-              <TabsTrigger value="media">Media</TabsTrigger>
-              <TabsTrigger value="ttp-content">TTP Content</TabsTrigger>
-              <TabsTrigger value="contact">Contact</TabsTrigger>
+            <TabsList
+              className="grid w-full grid-cols-4 gap-x-2 border-b px-2"
+              style={{ borderColor: "#E5E7EB" }}
+            >
+              <TabsTrigger
+                value="overview"
+                className="py-2 text-black data-[state=active]:border-b-[2px] data-[state=active]:border-[#FF6B00] data-[state=active]:text-[#FF6B00]"
+              >
+                Overview
+              </TabsTrigger>
+              <TabsTrigger
+                value="media"
+                className="py-2 text-black data-[state=active]:border-b-[2px] data-[state=active]:border-[#FF6B00] data-[state=active]:text-[#FF6B00]"
+              >
+                Media
+              </TabsTrigger>
+              <TabsTrigger
+                value="ttp-content"
+                className="py-2 text-black data-[state=active]:border-b-[2px] data-[state=active]:border-[#FF6B00] data-[state=active]:text-[#FF6B00]"
+              >
+                TTP Content
+              </TabsTrigger>
+              <TabsTrigger
+                value="contact"
+                className="py-2 text-black data-[state=active]:border-b-[2px] data-[state=active]:border-[#FF6B00] data-[state=active]:text-[#FF6B00]"
+              >
+                Contact
+              </TabsTrigger>
             </TabsList>
 
             <TabsContent value="overview" className="mt-4">
@@ -292,11 +331,14 @@ export const SponsoredCompanyCard: React.FC<SponsoredCompanyCardProps> = ({
                     <CardContent className="p-4">
                       <div className="flex items-center gap-2 mb-2">
                         <Award className="w-4 h-4 text-ttp-orange" />
-                        <Badge variant="outline" className="text-xs">
+                        <Badge variant="outline" className="text-xs text-black">
                           {content.type.toUpperCase()}
                         </Badge>
                         {content.issueNumber && (
-                          <Badge variant="outline" className="text-xs">
+                          <Badge
+                            variant="outline"
+                            className="text-xs text-black"
+                          >
                             Issue {content.issueNumber}
                           </Badge>
                         )}
@@ -351,6 +393,7 @@ export const SponsoredCompanyCard: React.FC<SponsoredCompanyCardProps> = ({
               </div>
             </TabsContent>
           </Tabs>
+        </div>
         </div>
       </CardContent>
     </Card>

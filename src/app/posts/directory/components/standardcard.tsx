@@ -47,7 +47,7 @@ export const StandardCompanyCard: React.FC<StandardCompanyCardProps> = ({
                 {company.name}
               </h3>
               {company.verified && (
-                <Badge variant="outline" className="text-xs">
+                <Badge variant="outline" className="text-xs text-black">
                   <CheckCircle className="w-3 h-3 mr-1" />
                   Verified
                 </Badge>
@@ -87,7 +87,7 @@ export const StandardCompanyCard: React.FC<StandardCompanyCardProps> = ({
                     <Badge
                       key={product}
                       variant="outline"
-                      className="text-xs bg-gray-50"
+                      className="text-xs bg-gray-50 text-gray-500"
                     >
                       {product}
                     </Badge>

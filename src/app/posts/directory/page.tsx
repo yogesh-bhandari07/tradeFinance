@@ -100,7 +100,7 @@ const CompanyDirectory = () => {
                         key={company.id}
                         className="flex items-center gap-2 bg-white rounded px-3 py-1"
                       >
-                        <span className="text-sm font-medium">
+                        <span className="text-sm font-medium text-gray-500">
                           {company.name}
                         </span>
                         <button
@@ -163,7 +163,7 @@ const CompanyDirectory = () => {
                     {sponsoredCompanies.map((company) => (
                       <div key={company.id} className="relative">
                         <SponsoredCompanyCard company={company} />
-                        <div className="absolute top-4 right-4">
+                        <div className="absolute bottom-4 right-4 bg-white ">
                           <Button
                             variant="outline"
                             size="sm"
@@ -196,11 +196,11 @@ const CompanyDirectory = () => {
                       <div className="h-px bg-gradient-to-r from-gray-300 to-transparent flex-1"></div>
                     </div>
                   )}
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" >
                     {standardCompanies.map((company) => (
-                      <div key={company.id} className="relative">
-                        <StandardCompanyCard company={company} />
-                        <div className="absolute top-4 right-4">
+                    <div key={company.id} className="relative min-h-[10rem]">
+                    <StandardCompanyCard company={company} className="min-h-[16rem]" />
+                        <div className="absolute bottom-10 right-4">
                           <Button
                             variant="outline"
                             size="sm"
