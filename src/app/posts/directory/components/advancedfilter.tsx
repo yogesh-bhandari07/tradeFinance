@@ -120,7 +120,7 @@ export const AdvancedFilters: React.FC<AdvancedFiltersProps> = ({
     <Card className="mb-6">
       <CardHeader className="pb-4">
         <div className="flex items-center justify-between">
-          <CardTitle className="flex items-center gap-2">
+          <CardTitle className="flex items-center gap-2 text-gray-300">
             <Filter className="w-5 h-5" />
             Advanced Filters
           </CardTitle>
@@ -144,11 +144,18 @@ export const AdvancedFilters: React.FC<AdvancedFiltersProps> = ({
         <div className="relative">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
           <Input
+  placeholder="Search companies, products, or technologies..."
+  className="pl-10 border border-gray-300 text-[#3E3D4C] bg-white placeholder:text-gray-400"
+  value={filters.search || ""}
+  onChange={(e) => updateFilter("search", e.target.value)}
+/>
+
+          {/* <Input
             placeholder="Search companies, products, or technologies..."
             className="pl-10"
             value={filters.search || ""}
             onChange={(e) => updateFilter("search", e.target.value)}
-          />
+          /> */}
         </div>
 
         {/* Quick Filters */}
@@ -194,7 +201,7 @@ export const AdvancedFilters: React.FC<AdvancedFiltersProps> = ({
         {/* Main Filter Row */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 bg-white">
           <div>
-            <label className="block text-sm font-medium text-forground mb-2">
+            <label className="block text-sm font-medium  text-[#3E3D4C] mb-2">
               Company Type
             </label>
             <Select
@@ -206,10 +213,10 @@ export const AdvancedFilters: React.FC<AdvancedFiltersProps> = ({
                 )
               }
             >
-              <SelectTrigger>
+              <SelectTrigger  className="border border-gray-300 bg-white text-[#3E3D4C]">
                 <SelectValue placeholder="All types" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-white text-[#3E3D4C]">
                 <SelectItem value="all">All types</SelectItem>
                 {companyTypes.map((type) => (
                   <SelectItem key={type.value} value={type.value}>
@@ -221,7 +228,7 @@ export const AdvancedFilters: React.FC<AdvancedFiltersProps> = ({
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-forground mb-2">
+            <label className="block text-sm font-medium  text-[#3E3D4C] mb-2">
               Region
             </label>
             <Select
@@ -230,10 +237,10 @@ export const AdvancedFilters: React.FC<AdvancedFiltersProps> = ({
                 updateFilter("region", value === "all" ? undefined : value)
               }
             >
-              <SelectTrigger>
+              <SelectTrigger  className="border border-gray-300 bg-white text-[#3E3D4C]">
                 <SelectValue placeholder="All regions" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-white text-[#3E3D4C]">
                 <SelectItem value="all">All regions</SelectItem>
                 {regions.map((region) => (
                   <SelectItem key={region} value={region}>
@@ -245,7 +252,7 @@ export const AdvancedFilters: React.FC<AdvancedFiltersProps> = ({
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-forground mb-2">
+            <label className="block text-sm font-medium  text-[#3E3D4C] mb-2">
               Function
             </label>
             <Select
@@ -254,10 +261,10 @@ export const AdvancedFilters: React.FC<AdvancedFiltersProps> = ({
                 updateFilter("function", value === "all" ? undefined : value)
               }
             >
-              <SelectTrigger>
+              <SelectTrigger  className="border border-gray-300 bg-white text-[#3E3D4C]">
                 <SelectValue placeholder="All functions" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-white text-[#3E3D4C]">
                 <SelectItem value="all">All functions</SelectItem>
                 {functions.map((func) => (
                   <SelectItem key={func} value={func}>
@@ -274,7 +281,7 @@ export const AdvancedFilters: React.FC<AdvancedFiltersProps> = ({
           <div className="space-y-6 pt-4 border-t">
             {/* Product Types */}
             <div>
-              <label className="block text-sm font-medium text-forground mb-3">
+              <label className="block text-sm font-medium  text-[#3E3D4C] mb-3">
                 Product Types
               </label>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
@@ -290,7 +297,7 @@ export const AdvancedFilters: React.FC<AdvancedFiltersProps> = ({
                         )
                       }
                     />
-                    <label htmlFor={product} className="text-sm text-forground">
+                    <label htmlFor={product} className="text-sm  text-[#3E3D4C]">
                       {product}
                     </label>
                   </div>
@@ -300,7 +307,7 @@ export const AdvancedFilters: React.FC<AdvancedFiltersProps> = ({
 
             {/* Compliance Tags */}
             <div>
-              <label className="block text-sm font-medium text-forground mb-3">
+              <label className="block text-sm font-medium  text-[#3E3D4C] mb-3">
                 Compliance & Standards
               </label>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
@@ -313,7 +320,7 @@ export const AdvancedFilters: React.FC<AdvancedFiltersProps> = ({
                         updateFilter("complianceTag", checked ? tag : undefined)
                       }
                     />
-                    <label htmlFor={tag} className="text-sm text-forground">
+                    <label htmlFor={tag} className="text-sm  text-[#3E3D4C]">
                       {tag}
                     </label>
                   </div>
@@ -323,7 +330,7 @@ export const AdvancedFilters: React.FC<AdvancedFiltersProps> = ({
 
             {/* TTP Editorial Filters */}
             <div>
-              <label className="block text-sm font-medium text-forground mb-3">
+              <label className="block text-sm font-medium  text-[#3E3D4C] mb-3">
                 TTP Editorial
               </label>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
@@ -339,7 +346,7 @@ export const AdvancedFilters: React.FC<AdvancedFiltersProps> = ({
                         )
                       }
                     />
-                    <label htmlFor={content} className="text-sm text-forground">
+                    <label htmlFor={content} className="text-sm  text-[#3E3D4C]">
                       {content}
                     </label>
                   </div>
@@ -357,7 +364,7 @@ export const AdvancedFilters: React.FC<AdvancedFiltersProps> = ({
               {Object.entries(filters).map(([key, value]) => {
                 if (!value) return null;
                 return (
-                  <Badge key={key} variant="secondary" className="text-xs">
+                  <Badge key={key} variant="secondary" className="text-xs bg-[#F3F4F6] text-[#3E3D4C] border border-[#D1D5DB]">
                     {String(value)}
                     <button
                       onClick={() =>

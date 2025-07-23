@@ -86,14 +86,19 @@ const VideoPage = () => {
             <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center flex-1 ">
               <div className="relative flex-1 max-w-md">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 bg-white" />
-                <Input placeholder="Search videos..." className="pl-10" />
+                {/* <Input placeholder="Search videos..." className="pl-10" /> */}
+                <Input
+  placeholder="Search companies, products, or technologies..."
+  className="pl-10 border border-gray-300 text-[#3E3D4C] bg-white placeholder:text-gray-400"
+/>
+
               </div>
 
               <Select value={filterBy} onValueChange={setFilterBy}>
-                <SelectTrigger className="w-48">
+                <SelectTrigger   className="border border-gray-300 bg-white text-[#3E3D4C] w-48">
                   <SelectValue placeholder="Category" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white text-[#3E3D4C]">
                   <SelectItem value="all">All Categories</SelectItem>
                   <SelectItem value="education">Educational</SelectItem>
                   <SelectItem value="panel">Panel Discussions</SelectItem>
@@ -103,10 +108,10 @@ const VideoPage = () => {
               </Select>
 
               <Select value={sortBy} onValueChange={setSortBy}>
-                <SelectTrigger className="w-48">
+                <SelectTrigger   className="border border-gray-300 bg-white text-[#3E3D4C] w-48">
                   <SelectValue placeholder="Sort by" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white text-[#3E3D4C]">
                   <SelectItem value="latest">Latest</SelectItem>
                   <SelectItem value="popular">Most Popular</SelectItem>
                   <SelectItem value="duration">Duration</SelectItem>
