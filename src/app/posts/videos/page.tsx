@@ -86,7 +86,6 @@ const VideoPage = () => {
             <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center flex-1 ">
               <div className="relative flex-1 max-w-md">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 bg-white" />
-                {/* <Input placeholder="Search videos..." className="pl-10" /> */}
                 <Input
   placeholder="Search companies, products, or technologies..."
   className="pl-10 border border-gray-300 text-[#3E3D4C] bg-white placeholder:text-gray-400"

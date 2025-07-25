@@ -276,7 +276,7 @@ export const mockEditions: Edition[] = [
       "Comprehensive quarterly analysis of trade finance trends, digital transformation, and market insights from leading industry experts.",
     issueNumber: 1,
     publishDate: "2024-03-15",
-    coverImage: "/lovable-uploads/13b24432-05ca-49f5-be73-7bae10f76e2d.png",
+    coverImage: "https://picsum.photos/200/300/?blur",
     featured: true,
     downloadUrl: "#",
     previewUrl: "#",
@@ -303,7 +303,7 @@ export const mockEditions: Edition[] = [
       "Comprehensive guide covering credit insurance fundamentals, risk assessment, and mitigation strategies for trade finance professionals.",
     issueNumber: 1,
     publishDate: "2024-02-01",
-    coverImage: "/lovable-uploads/65fb599a-b766-4f9e-921b-240a7b63d0e7.png",
+    coverImage: "https://picsum.photos/200/300/?blur",
     featured: true,
     downloadUrl: "#",
     previewUrl: "#",
@@ -325,7 +325,7 @@ export const mockEditions: Edition[] = [
       "Essential guide for trade finance professionals covering fundamental concepts, instruments, and best practices.",
     issueNumber: 2,
     publishDate: "2024-01-15",
-    coverImage: "/lovable-uploads/b8bcd326-cdf3-4510-928f-5e615a0a4b47.png",
+    coverImage: "https://picsum.photos/200/300/?blur",
     featured: false,
     downloadUrl: "#",
     previewUrl: "#",
@@ -352,7 +352,7 @@ export const mockEditions: Edition[] = [
       "In-depth analysis of tariff evolution and its impact on global trade from historical perspectives to modern applications.",
     issueNumber: 3,
     publishDate: "2024-01-01",
-    coverImage: "/lovable-uploads/19f7a9ce-77fa-4eef-bc79-fed5366efc0f.png",
+    coverImage: "https://picsum.photos/200/300/?blur",
     featured: false,
     downloadUrl: "#",
     previewUrl: "#",
@@ -373,7 +373,7 @@ export const mockEditions: Edition[] = [
       "Critical analysis of how digital transformation in trade is creating new forms of inequality and economic divides.",
     issueNumber: 4,
     publishDate: "2023-12-15",
-    coverImage: "/lovable-uploads/0d778546-26fb-4b68-b31e-9848400b70ab.png",
+    coverImage: "https://picsum.photos/200/300/?blur",
     featured: true,
     downloadUrl: "#",
     previewUrl: "#",
@@ -399,7 +399,7 @@ export const mockEditions: Edition[] = [
       "Comprehensive roundtable discussion on interoperability challenges in trade digitisation and potential solutions.",
     issueNumber: 1,
     publishDate: "2023-11-30",
-    coverImage: "/lovable-uploads/7e0f7559-9645-44b4-a3a3-7cb7d76f15c1.png",
+    coverImage: "https://picsum.photos/200/300/?blur",
     featured: false,
     downloadUrl: "#",
     previewUrl: "#",
@@ -426,7 +426,7 @@ export const mockEditions: Edition[] = [
       "Analysis of how connector nations are reshaping global trade routes and creating new economic opportunities.",
     issueNumber: 2,
     publishDate: "2023-10-15",
-    coverImage: "/lovable-uploads/3b8abacc-c54f-4c1a-adf2-d025df2ea524.png",
+    coverImage: "https://picsum.photos/200/300/?blur",
     featured: false,
     downloadUrl: "#",
     previewUrl: "#",
@@ -454,3 +454,28 @@ export const getAllContent = () => ({
   conferences: mockConferences,
   editions: mockEditions,
 });
+
+
+export const getEditionBySlug = (slug: string): Edition | null => {
+  console.log("Looking for edition with slug:", slug);
+
+  // First try to find by exact ID match
+  let edition = mockEditions.find((edition) => edition.id === slug);
+
+  // If not found, try to find by generated slug
+  if (!edition) {
+    edition = mockEditions.find(
+      (edition) => createSlug(edition.title) === slug
+    );
+  }
+
+  console.log("Found edition:", edition);
+  return edition || null;
+};
+
+export const createSlug = (title: string): string => {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+};
