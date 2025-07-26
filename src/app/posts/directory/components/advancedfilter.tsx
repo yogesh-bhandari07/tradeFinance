@@ -106,8 +106,10 @@ export const AdvancedFilters: React.FC<AdvancedFiltersProps> = ({
     "Editorial Contributor",
   ];
 
-  const updateFilter = (key: keyof CompanyFilter, value: any) => {
+  // const updateFilter = (key: keyof CompanyFilter, value: any) => {
+    const updateFilter = <K extends keyof CompanyFilter>(key: K, value: CompanyFilter[K]) => {
     onFiltersChange({ ...filters, [key]: value });
+
   };
 
   const hasActiveFilters = Object.keys(filters).some(
@@ -290,7 +292,7 @@ export const AdvancedFilters: React.FC<AdvancedFiltersProps> = ({
                     <Checkbox
                       id={product}
                       checked={filters.productType === product}
-                      onCheckedChange={(checked: any) =>
+                      onCheckedChange={(checked: boolean) =>
                         updateFilter(
                           "productType",
                           checked ? product : undefined
