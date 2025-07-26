@@ -6,7 +6,6 @@ import {
   CardTitle,
 } from "@/shared/components/card";
 import { Button } from "@/shared/components/button";
-import { Badge } from "@/shared/components/badge";
 import {
   Table,
   TableBody,
@@ -40,19 +39,36 @@ export const CompanyComparison: React.FC<CompanyComparisonProps> = ({
   onRemoveCompany,
   onClose,
 }) => {
-  const comparisonAttributes = [
-    { key: "type", label: "Company Type", icon: Building2 },
-    { key: "headquarters", label: "Headquarters", icon: MapPin },
-    { key: "founded", label: "Founded", icon: Calendar },
-    { key: "employeeCount", label: "Team Size", icon: Users },
-    { key: "regions", label: "Geographic Presence", icon: Globe },
-    { key: "productTypes", label: "Products & Services", icon: null },
-    { key: "complianceTags", label: "Compliance Standards", icon: Shield },
-    { key: "verified", label: "TTP Verified", icon: CheckCircle },
-    { key: "sponsored", label: "Featured Partner", icon: Star },
-  ];
+  // const comparisonAttributes = [
+  //   { key: "type", label: "Company Type", icon: Building2 },
+  //   { key: "headquarters", label: "Headquarters", icon: MapPin },
+  //   { key: "founded", label: "Founded", icon: Calendar },
+  //   { key: "employeeCount", label: "Team Size", icon: Users },
+  //   { key: "regions", label: "Geographic Presence", icon: Globe },
+  //   { key: "productTypes", label: "Products & Services", icon: null },
+  //   { key: "complianceTags", label: "Compliance Standards", icon: Shield },
+  //   { key: "verified", label: "TTP Verified", icon: CheckCircle },
+  //   { key: "sponsored", label: "Featured Partner", icon: Star },
+  // ];
+  const comparisonAttributes: AttributeFilter[] = [
+  { key: "type", label: "Company Type", icon: Building2 },
+  { key: "headquarters", label: "Headquarters", icon: MapPin },
+  { key: "founded", label: "Founded", icon: Calendar },
+  { key: "employeeCount", label: "Team Size", icon: Users },
+  { key: "regions", label: "Geographic Presence", icon: Globe },
+  { key: "productTypes", label: "Products & Services" },
+  { key: "complianceTags", label: "Compliance Standards", icon: Shield },
+  { key: "verified", label: "TTP Verified", icon: CheckCircle },
+  { key: "sponsored", label: "Featured Partner", icon: Star },
+];
 
-  const renderAttributeValue = (company: Company, attribute: any) => {
+type AttributeFilter = {
+  key: keyof Company;
+  label: string;
+  icon?: React.ElementType;
+};
+
+const renderAttributeValue = (company: Company, attribute: AttributeFilter) => {
     const value = company[attribute.key as keyof Company];
 
     switch (attribute.key) {

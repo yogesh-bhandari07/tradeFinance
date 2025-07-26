@@ -1,4 +1,4 @@
-import { Company } from "@/app/types/directorycompany";
+import { Company, CompanyFilter } from "@/app/types/directorycompany";
 
 export const mockCompanies: Company[] = [
   {
@@ -284,7 +284,7 @@ export const companyRegions = [
   "Middle East",
 ];
 
-export const getCompanies = (filter?: any) => {
+export const getCompanies = (filter?: CompanyFilter) => {
   let filtered = [...mockCompanies];
 
   if (filter?.type) {
@@ -293,7 +293,7 @@ export const getCompanies = (filter?: any) => {
 
   if (filter?.region) {
     filtered = filtered.filter((company) =>
-      company.regions.includes(filter.region)
+      company.regions.includes(filter.region!)
     );
   }
 

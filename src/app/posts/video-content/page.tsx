@@ -26,7 +26,7 @@ const pathname = usePathname();
   const getContentInfo = () => {
     const contentMap: Record<
       string,
-      { title: string; description: string; icon: any }
+      { title: string; description: string; icon?: React.ElementType }
     > = {
       "latest-articles": {
         title: "Latest Articles",
@@ -158,7 +158,7 @@ const pathname = usePathname();
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
               <div className="flex items-center gap-3 mb-4">
-                <IconComponent className="h-8 w-8 text-ttp-orange" />
+                {IconComponent && <IconComponent className="h-8 w-8 text-ttp-orange" />}
                 <h1 className="text-4xl md:text-5xl font-bold">
                   {contentInfo.title}
                 </h1>
