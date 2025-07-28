@@ -1,13 +1,16 @@
 'use client'
 import React, { useState, useMemo } from "react";
 import { Button } from "@/shared/components/button";
-import { SponsoredCompanyCard } from "./components/sponsorcompanycard";
+// import { SponsoredCompanyCard } from "./components/sponsorcompanycard";
 import { StandardCompanyCard } from "./components/standardcard";
 import { AdvancedFilters } from "./components/advancedfilter";
 import { CompanyComparison } from "./components/comparison";
 import { getCompanies } from "@/shared/data/companies";
 import { CompanyFilter, Company } from "@/app/types/directorycompany";
 import { Building2, BarChart3, ArrowRight, Zap } from "lucide-react";
+import { AwardsShowcase } from '@/app/companies/components/awards';
+import { ContentContributorsSection } from '@/app/companies/components/contribution';
+import { DownloadableResources } from '@/app/companies/components/downloadresource';
 
 const CompanyDirectory = () => {
   const [filter, setFilter] = useState<CompanyFilter>({});
@@ -74,6 +77,20 @@ const CompanyDirectory = () => {
               <span>{sponsoredCompanies.length} featured partners</span>
             </div>
           </div>
+
+            {Object.keys(filter).length === 0 && (
+            <AwardsShowcase companies={companies} />
+          )}
+
+          {/* Content Contributors Section - Only show when no filters applied */}
+          {Object.keys(filter).length === 0 && (
+            <ContentContributorsSection companies={companies} />
+          )}
+
+          {/* Downloadable Resources - Only show when no filters applied */}
+          {Object.keys(filter).length === 0 && (
+            <DownloadableResources companies={companies} />
+          )}
 
           {/* Advanced Filters */}
           <AdvancedFilters
@@ -162,7 +179,7 @@ const CompanyDirectory = () => {
                   <div className="space-y-6">
                     {sponsoredCompanies.map((company) => (
                       <div key={company.id} className="relative">
-                        <SponsoredCompanyCard company={company} />
+                        {/* <SponsoredCompanyCard company={company} /> */}
                         <div className="absolute bottom-4 right-4 bg-white ">
                           <Button
                             variant="outline"

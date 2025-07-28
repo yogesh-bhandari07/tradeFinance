@@ -102,7 +102,7 @@ export const StandardCompanyCard: React.FC<StandardCompanyCardProps> = ({
             )}
 
             {/* Compliance Tags */}
-            {company.complianceTags && company.complianceTags.length > 0 && (
+            {/* {company.complianceTags && company.complianceTags.length > 0 && (
               <div className="mb-3">
                 <div className="flex flex-wrap gap-1">
                   {company.complianceTags.slice(0, 2).map((tag) => (
@@ -116,7 +116,7 @@ export const StandardCompanyCard: React.FC<StandardCompanyCardProps> = ({
                   ))}
                 </div>
               </div>
-            )}
+            )} */}
 
             {/* Regions */}
             <div className="flex items-center gap-2 text-xs text-gray-500 mb-4">

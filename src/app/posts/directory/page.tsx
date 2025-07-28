@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useMemo } from "react";
 import { Button } from "@/shared/components/button";
-import { SponsoredCompanyCard } from "./components/sponsorcompanycard";
+// import { SponsoredCompanyCard } from "./components/sponsorcompanycard";
 import { StandardCompanyCard } from "./components/standardcard";
 import { AdvancedFilters } from "./components/advancedfilter";
 import { CompanyComparison } from "./components/comparison";
@@ -162,7 +162,7 @@ const CompanyDirectory = () => {
                   <div className="space-y-6">
                     {sponsoredCompanies.map((company) => (
                       <div key={company.id} className="relative">
-                        <SponsoredCompanyCard company={company} />
+                        {/* <SponsoredCompanyCard company={company} /> */}
                         <div className="absolute bottom-4 right-4 bg-white ">
                           <Button
                             variant="outline"

@@ -118,6 +118,7 @@ export const GlobalAdvisoryPanel = () => {
     },
   ];
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const AdvisorCard = ({ advisor }: { advisor: any }) => (
     <Card className="h-full">
       <CardContent className="p-4">
@@ -127,7 +128,8 @@ export const GlobalAdvisoryPanel = () => {
             <AvatarFallback className="bg-ttp-orange text-white font-bold text-sm">
               {advisor.name
                 .split(" ")
-                .map((n) => n[0])
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                .map((n: any[]) => n[0])
                 .join("")}
             </AvatarFallback>
           </Avatar>
