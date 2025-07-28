@@ -3,9 +3,6 @@ import tailwindcssAnimate from "tailwindcss-animate";
 
 module.exports = {
   darkMode: "class",
-    // content: ["./src/**/*.{ts,tsx}"],
-    
-    
     content: [
       
       "./app/**/*.{js,ts,jsx,tsx}",
@@ -85,6 +82,8 @@ module.exports = {
         "ttp-charcoal": "#3E3D4C",
         "ttp-orange": "#F16814",
         "ttp-purple": "#994fb2",
+        "ttp-orange": "#F16814",
+        "ttp-teal": "#37845d",
         "ttp-green": "#7fb44a",
         "ttp-dark-purple": "#733381",
         "ttp-teal": "#37845d",
