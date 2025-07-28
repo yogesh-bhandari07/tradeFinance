@@ -1,8 +1,17 @@
 import React, { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/shared/components/card";
 import { Badge } from "@/shared/components/badge";
 import { Button } from "@/shared/components/button";
-import { Avatar, AvatarFallback, AvatarImage } from "@/shared/components/avatar";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/shared/components/avatar";
 import { MapPin, Users, ChevronDown, ChevronUp } from "lucide-react";
 
 export const GlobalAdvisoryPanel = () => {
@@ -127,7 +136,7 @@ export const GlobalAdvisoryPanel = () => {
             <AvatarFallback className="bg-ttp-orange text-white font-bold text-sm">
               {advisor.name
                 .split(" ")
-                .map((n) => n[0])
+                .map((n: any) => n[0])
                 .join("")}
             </AvatarFallback>
           </Avatar>
