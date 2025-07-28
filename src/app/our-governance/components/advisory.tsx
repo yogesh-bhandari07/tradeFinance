@@ -1,8 +1,17 @@
 import React, { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/shared/components/card";
 import { Badge } from "@/shared/components/badge";
 import { Button } from "@/shared/components/button";
-import { Avatar, AvatarFallback, AvatarImage } from "@/shared/components/avatar";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/shared/components/avatar";
 import { MapPin, Users, ChevronDown, ChevronUp } from "lucide-react";
 
 export const GlobalAdvisoryPanel = () => {
@@ -11,6 +20,15 @@ export const GlobalAdvisoryPanel = () => {
   const togglePanel = (panelId: string) => {
     setExpandedPanel(expandedPanel === panelId ? null : panelId);
   };
+  interface Advisor {
+    name: string;
+    role: string;
+    company: string;
+    location: string;
+    expertise: string;
+    bio: string;
+    avatar: string;
+  }
 
   const sectorAdvisors = [
     {
@@ -118,8 +136,7 @@ export const GlobalAdvisoryPanel = () => {
     },
   ];
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const AdvisorCard = ({ advisor }: { advisor: any }) => (
+  const AdvisorCard = ({ advisor }: { advisor: Advisor }) => (
     <Card className="h-full">
       <CardContent className="p-4">
         <div className="flex items-start gap-3 mb-3">
@@ -128,8 +145,7 @@ export const GlobalAdvisoryPanel = () => {
             <AvatarFallback className="bg-ttp-orange text-white font-bold text-sm">
               {advisor.name
                 .split(" ")
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                .map((n: any[]) => n[0])
+                .map((n: string) => n[0])
                 .join("")}
             </AvatarFallback>
           </Avatar>
