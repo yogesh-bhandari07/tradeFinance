@@ -136,7 +136,7 @@ export const GlobalAdvisoryPanel = () => {
             <AvatarFallback className="bg-ttp-orange text-white font-bold text-sm">
               {advisor.name
                 .split(" ")
-                .map((n: any) => n[0])
+                .map((n: string) => n[0])
                 .join("")}
             </AvatarFallback>
           </Avatar>
