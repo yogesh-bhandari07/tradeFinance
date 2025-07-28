@@ -20,6 +20,15 @@ export const GlobalAdvisoryPanel = () => {
   const togglePanel = (panelId: string) => {
     setExpandedPanel(expandedPanel === panelId ? null : panelId);
   };
+  interface Advisor {
+    name: string;
+    role: string;
+    company: string;
+    location: string;
+    expertise: string;
+    bio: string;
+    avatar: string;
+  }
 
   const sectorAdvisors = [
     {
@@ -127,7 +136,7 @@ export const GlobalAdvisoryPanel = () => {
     },
   ];
 
-  const AdvisorCard = ({ advisor }: { advisor: any }) => (
+  const AdvisorCard = ({ advisor }: { advisor: Advisor }) => (
     <Card className="h-full">
       <CardContent className="p-4">
         <div className="flex items-start gap-3 mb-3">
