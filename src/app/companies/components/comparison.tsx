@@ -24,7 +24,6 @@ import {
   CheckCircle,
   X,
   Star,
-  Shield,
   Users,
 } from "lucide-react";
 
@@ -57,10 +56,10 @@ export const CompanyComparison: React.FC<CompanyComparisonProps> = ({
   { key: "employeeCount", label: "Team Size", icon: Users },
   { key: "regions", label: "Geographic Presence", icon: Globe },
   { key: "productTypes", label: "Products & Services" },
-  { key: "complianceTags", label: "Compliance Standards", icon: Shield },
   { key: "verified", label: "TTP Verified", icon: CheckCircle },
   { key: "sponsored", label: "Featured Partner", icon: Star },
 ];
+// { key: "compliance", label: "Compliance Standards", icon: Shield },
 
 type AttributeFilter = {
   key: keyof Company;
@@ -87,36 +86,36 @@ const renderAttributeValue = (company: Company, attribute: AttributeFilter) => {
 
       case "regions":
       case "productTypes":
-      case "complianceTags":
-        return Array.isArray(value) ? (
-          <div className="flex flex-wrap gap-1">
-            {(value as string[]).slice(0, 2).map((item) => (
-              <span
-                key={item}
-                className="text-xs rounded px-2 py-1"
-                style={{
-                  backgroundColor: "#F3F4F6",
-                  color: "#1F2937",
-                }}
-              >
-                {item}
-              </span>
-            ))}
-            {(value as string[]).length > 2 && (
-              <span
-                className="text-xs rounded px-2 py-1"
-                style={{
-                  backgroundColor: "#F3F4F6",
-                  color: "#1F2937",
-                }}
-              >
-                +{(value as string[]).length - 2}
-              </span>
-            )}
-          </div>
-        ) : (
-          "-"
-        );
+      // case "complianceTags":
+      //   return Array.isArray(value) ? (
+      //     <div className="flex flex-wrap gap-1">
+      //       {(value as string[]).slice(0, 2).map((item) => (
+      //         <span
+      //           key={item}
+      //           className="text-xs rounded px-2 py-1"
+      //           style={{
+      //             backgroundColor: "#F3F4F6",
+      //             color: "#1F2937",
+      //           }}
+      //         >
+      //           {item}
+      //         </span>
+      //       ))}
+      //       {(value as string[]).length > 2 && (
+      //         <span
+      //           className="text-xs rounded px-2 py-1"
+      //           style={{
+      //             backgroundColor: "#F3F4F6",
+      //             color: "#1F2937",
+      //           }}
+      //         >
+      //           +{(value as string[]).length - 2}
+      //         </span>
+      //       )}
+      //     </div>
+      //   ) : (
+      //     "-"
+      //   );
 
       case "verified":
       case "sponsored":
