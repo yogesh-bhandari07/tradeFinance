@@ -1,7 +1,7 @@
-'use client'
+"use client";
 import React from "react";
 // import { useLocation } from "react-router-dom";
-import { usePathname } from 'next/navigation';
+import { usePathname } from "next/navigation";
 
 import { Button } from "@/shared/components/button";
 import { Badge } from "@/shared/components/badge";
@@ -16,17 +16,16 @@ import {
 } from "lucide-react";
 
 const ContentPage = () => {
-//   const location = useLocation();
-//   const pathSegments = location.pathname.split("/");
-//   const contentType = pathSegments[pathSegments.length - 1];
+  //   const location = useLocation();
+  //   const pathSegments = location.pathname.split("/");
 
-const pathname = usePathname();
+  const pathname = usePathname();
   const pathSegments = pathname.split("/");
   const contentType = pathSegments[pathSegments.length - 1];
   const getContentInfo = () => {
     const contentMap: Record<
       string,
-      { title: string; description: string; icon: any }
+      { title: string; description: string; icon?: React.ElementType }
     > = {
       "latest-articles": {
         title: "Latest Articles",
@@ -151,14 +150,14 @@ const pathname = usePathname();
 
   return (
     <div className="min-h-screen bg-background">
-=
+      =
       <main className="pt-8">
         {/* Hero Section */}
-<section className="bg-gradient-to-r from-[#3E3D4C] to-[#6A0DAD] text-white py-16">
+        <section className="bg-gradient-to-r from-[#3E3D4C] to-[#6A0DAD] text-white py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
               <div className="flex items-center gap-3 mb-4">
-                <IconComponent className="h-8 w-8 text-ttp-orange" />
+                {IconComponent && <IconComponent className="h-8 w-8 text-ttp-orange" />}
                 <h1 className="text-4xl md:text-5xl font-bold">
                   {contentInfo.title}
                 </h1>
@@ -195,7 +194,9 @@ const pathname = usePathname();
                       <Badge className="bg-ttp-orange text-white">
                         {item.category}
                       </Badge>
-                      <Badge variant="outline" className="text-black">{item.type}</Badge>
+                      <Badge variant="outline" className="text-black">
+                        {item.type}
+                      </Badge>
                     </div>
 
                     <h3 className="text-xl font-semibold text-ttp-charcoal mb-2">
@@ -254,7 +255,6 @@ const pathname = usePathname();
           </div>
         </section>
       </main>
-
     </div>
   );
 };

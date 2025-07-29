@@ -1,3 +1,4 @@
+
 export interface Company {
   id: string;
   name: string;
@@ -14,20 +15,52 @@ export interface Company {
   featured: boolean;
   verified: boolean;
   sponsored: boolean;
-  sponsorshipLevel?: "premium" | "featured" | "standard";
+  sponsorshipLevel?: 'premium' | 'featured' | 'standard';
   tags?: string[];
-  complianceTags?: string[];
   integrationSupport?: string[];
   productTypes?: string[];
   functions?: string[];
-  mediaContent?: MediaContent[];
-  ttlContent?: TTpContent[];
+  content?: ContentItem[];
+  events?: EventContent[];
+  authors?: Author[];
   leadCapture?: LeadCaptureConfig;
   badges?: CompanyBadge[];
+  complianceTags?: string[];
+  ttlContent?: TTPContent[];
+  mediaContent?: MediaContent[];
   createdAt: string;
   updatedAt: string;
 }
-
+export interface TTPContent {
+  id: string;
+  type: "article" | "interview" | "award" | "feature";
+  title: string;
+  url: string;
+  issueNumber?: string;
+  date: string;
+  excerpt?: string;
+}
+export interface EventContent {
+  id: string;
+  type: 'conference' | 'webinar' | 'roundtable' | 'summit';
+  title: string;
+  date: string;
+  location?: string;
+  description?: string;
+  partnerLogo?: string;
+  partnerName?: string;
+  registrationUrl?: string;
+  eventUrl?: string;
+}
+export interface Author {
+  id: string;
+  name: string;
+  title?: string;
+  avatar?: string;
+  bio?: string;
+  linkedinUrl?: string;
+  email?: string;
+}
 export interface MediaContent {
   id: string;
   type: "video" | "podcast" | "webinar" | "interview";
@@ -38,6 +71,18 @@ export interface MediaContent {
   description?: string;
 }
 
+export interface ContentItem {
+  id: string;
+  type: 'video' | 'podcast' | 'webinar' | 'interview' | 'article' | 'award' | 'feature';
+  title: string;
+  url: string;
+  thumbnail?: string;
+  duration?: string;
+  description?: string;
+  issueNumber?: string;
+  date?: string;
+  excerpt?: string;
+}
 export interface TTpContent {
   id: string;
   type: "article" | "interview" | "award" | "feature";

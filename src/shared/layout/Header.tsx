@@ -29,10 +29,10 @@ const dropdownContent = {
               Trade <div className="w-1.5 h-1.5 rounded-full bg-[#e76f00]"></div>
             </h3>
             <div className="space-y-2 text-sm text-[#2e2e2e]">
-              <a className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#e76f00]" href="/topics/trade-policy-regulation">Trade Policy & Regulation</a>
-              <a className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#e76f00]" href="/topics/trade-finance">Trade Finance</a>
-              <a className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#e76f00]" href="/topics/export-credit-risk">Export Credit & Risk</a>
-              <a className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#e76f00]" href="/topics/supply-chains">Supply Chains</a>
+              <Link className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#e76f00]" href="/topics/trade-policy-regulation">Trade Policy & Regulation</Link>
+              <Link className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#e76f00]" href="/topics/trade-finance">Trade Finance</Link>
+              <Link className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#e76f00]" href="/topics/export-credit-risk">Export Credit & Risk</Link>
+              <Link className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#e76f00]" href="/topics/supply-chains">Supply Chains</Link>
             </div>
           </div>
 
@@ -42,10 +42,10 @@ const dropdownContent = {
               Treasury <div className="w-1.5 h-1.5 rounded-full bg-[#6a3fc8]"></div>
             </h3>
             <div className="space-y-2 text-sm text-[#2e2e2e]">
-              <a className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#6a3fc8]" href="/topics/liquidity-risk">Liquidity & Risk</a>
-              <a className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#6a3fc8]" href="/topics/fx-hedging">FX & Hedging</a>
-              <a className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#6a3fc8]" href="/topics/working-capital">Working Capital</a>
-              <a className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#6a3fc8]" href="/topics/receivables-finance">Receivables Finance</a>
+              <Link className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#6a3fc8]" href="/topics/liquidity-risk">Liquidity & Risk</Link>
+              <Link className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#6a3fc8]" href="/topics/fx-hedging">FX & Hedging</Link>
+              <Link className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#6a3fc8]" href="/topics/working-capital">Working Capital</Link>
+              <Link className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#6a3fc8]" href="/topics/receivables-finance">Receivables Finance</Link>
             </div>
           </div>
 
@@ -55,20 +55,20 @@ const dropdownContent = {
               Payments <div className="w-1.5 h-1.5 rounded-full bg-[#108442]"></div>
             </h3>
             <div className="space-y-2 text-sm text-[#2e2e2e]">
-              <a className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#108442]" href="/topics/cross-border-payments">Cross-border Payments</a>
-              <a className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#108442]" href="/topics/embedded-finance">Embedded Finance</a>
-              <a className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#108442]" href="/topics/digital-currencies">Digital Currencies</a>
-              <a className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#108442]" href="/topics/compliance-fraud">Compliance & Fraud</a>
+              <Link className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#108442]" href="/topics/cross-border-payments">Cross-border Payments</Link>
+              <Link className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#108442]" href="/topics/embedded-finance">Embedded Finance</Link>
+              <Link className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#108442]" href="/topics/digital-currencies">Digital Currencies</Link>
+              <Link className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#108442]" href="/topics/compliance-fraud">Compliance & Fraud</Link>
             </div>
           </div>
 
         </div>
 
         <div className="mt-6">
-          <a className="inline-flex items-center gap-2 font-medium text-[#e76f00] hover:text-[#cf6300]" href="/topics">
+          <Link className="inline-flex items-center gap-2 font-medium text-[#e76f00] hover:text-[#cf6300]" href="/topics">
             <span>Explore All Topics</span>
             <span>→</span>
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -137,10 +137,10 @@ const dropdownContent = {
               Shows & Series <div className="w-1.5 h-1.5 rounded-full bg-[#6a3fc8]"></div>
             </h3>
             <div className="space-y-2 text-sm text-[#2e2e2e]">
-              <a className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#6a3fc8]" href="/podcasts">Podcasts</a>
-              <a className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#6a3fc8]" href="/videos">Video Interviews</a>
-              <a className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#6a3fc8]" href="/webinars">Webinars</a>
-              {/* <a className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#6a3fc8]" href="/triple-t-episodes">"Triple T Episodes</a> */}
+              <Link className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#6a3fc8]" href="/podcasts">Podcasts</Link>
+              <Link className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#6a3fc8]" href="/videos">Video Interviews</Link>
+              <Link className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#6a3fc8]" href="/webinars">Webinars</Link>
+              {/* <Link className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#6a3fc8]" href="/triple-t-episodes">"Triple T Episodes</Link> */}
             </div>
           </div>
 
@@ -150,10 +150,10 @@ const dropdownContent = {
               Editorial <div className="w-1.5 h-1.5 rounded-full bg-[#e76f00]"></div>
             </h3>
             <div className="space-y-2 text-sm text-[#2e2e2e]">
-              <a className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#e76f00]" href="/posts/latest-articles">Latest Articles</a>
-              <a className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#e76f00]" href="/thought-leadership">Thought Leadership</a>
-              <a className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#e76f00]" href="/opinion-analysis">Opinion & Analysis</a>
-              <a className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#e76f00]" href="/news-announcements">News & Announcements</a>
+              <Link className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#e76f00]" href="/posts/latest-articles">Latest Articles</Link>
+              <Link className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#e76f00]" href="/thought-leadership">Thought Leadership</Link>
+              <Link className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#e76f00]" href="/opinion-analysis">Opinion & Analysis</Link>
+              <Link className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#e76f00]" href="/news-announcements">News & Announcements</Link>
             </div>
           </div>
 
@@ -163,9 +163,9 @@ const dropdownContent = {
               Publications <div className="w-1.5 h-1.5 rounded-full bg-[#108442]"></div>
             </h3>
             <div className="space-y-2 text-sm text-[#2e2e2e]">
-              <a className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#108442]" href="/publications">Magazine Editions</a>
-              <a className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#108442]" href="/whitepapers-guides">Whitepapers & Guides</a>
-              <a className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#108442]" href="/partner-reports">Partner Reports</a>
+              <Link className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#108442]" href="/publications">Magazine Editions</Link>
+              <Link className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#108442]" href="/whitepapers-guides">Whitepapers & Guides</Link>
+              <Link className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#108442]" href="/partner-reports">Partner Reports</Link>
             </div>
           </div>
 
@@ -175,9 +175,9 @@ const dropdownContent = {
               Events <div className="w-1.5 h-1.5 rounded-full bg-[#6a3fc8]"></div>
             </h3>
             <div className="space-y-2 text-sm text-[#2e2e2e]">
-              <a className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#6a3fc8]" href="/events">TTP Events</a>
-              <a className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#6a3fc8]" href="/partner-events">Partner Events</a>
-              <a className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#6a3fc8]" href="/event-calendar">Event Calendar</a>
+              <Link className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#6a3fc8]" href="/events">TTP Events</Link>
+              <Link className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#6a3fc8]" href="/partner-events">Partner Events</Link>
+              <Link className="block font-medium transition-all duration-200 hover:translate-x-1 hover:text-[#6a3fc8]" href="/event-calendar">Event Calendar</Link>
             </div>
           </div>
 
@@ -279,7 +279,7 @@ const dropdownContent = {
               </h3>
               <div className="space-y-2 text-sm font-medium">
                 <Link href="/newsletter" className="block hover:translate-x-1 transition-all duration-200" style={{ color: '#1C1C1C' }}>Newsletter</Link>
-                <Link href="/submit-story" className="block hover:translate-x-1 transition-all duration-200" style={{ color: '#1C1C1C' }}>Submit a Story</Link>
+                <Link href="/submit-story" className="block hover:translate-x-1 transition-all duration-200" style={{ color: '#1C1C1C' }}>Submit Link Story</Link>
                 <Link href="/join-network" className="block hover:translate-x-1 transition-all duration-200" style={{ color: '#1C1C1C' }}>Join Our Network</Link>
               </div>
             </div>
