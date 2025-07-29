@@ -9,7 +9,7 @@ export interface Post {
   date: string;
   categories: CategoryConnection;
   tags: TagConnection;
-  featuredImage: FeaturedImage;
+  featuredImage: FeaturedImage | string;
   singlePostPage: SinglePostPage;
   author: Author;
 }
