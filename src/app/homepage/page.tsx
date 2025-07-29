@@ -10,7 +10,7 @@ import ArticleInfo from "./components/articleinfo";
 import Contents from "./components/contentcart";
 import RelatedArticles from "./components/article";
 import CTA from "./components/cta";
-import { Post } from "../types/post";
+import { Post, SinglePostPage } from "../types/post";
 import { PostSetting } from "../types/post";
 import { RelatedPosts } from "../types/post";
 import { useEffect, useState } from "react";
@@ -56,11 +56,17 @@ export default function Homepage() {
     
     const loadRelatedPosts = async () => {
       try {
-        if (posts?.categories?.edges?.length) {
+        if (
+          posts?.categories &&
+          typeof posts.categories !== "string" &&
+          "edges" in posts.categories &&
+          Array.isArray(posts.categories.edges) &&
+          posts.categories.edges.length
+        ) {
           const categoryId = posts.categories.edges[0].node.id;
           const data = await fetchRelatedPosts([categoryId]);
           setRelatedPosts(data);
-                window.scrollTo({ top: 0, behavior: "smooth" });
+          window.scrollTo({ top: 0, behavior: "smooth" });
 
           console.log(data);
         } else {
@@ -81,8 +87,15 @@ export default function Homepage() {
       try {
         if (!posts) return;
 
-        const categoryIds =
-          posts.categories?.edges?.map((edge) => edge.node.id) || [];
+        let categoryIds: string[] = [];
+        if (
+          posts.categories &&
+          typeof posts.categories !== "string" &&
+          "edges" in posts.categories &&
+          Array.isArray(posts.categories.edges)
+        ) {
+          categoryIds = posts.categories.edges.map((edge) => edge.node.id);
+        }
         const related = await fetchRelatedPosts(categoryIds);
         setRelatedPosts(related);
       } catch (error) {
@@ -125,8 +138,8 @@ export default function Homepage() {
         title={posts.title}
         excerpt={posts.excerpt}
         date={posts.date}
-        featuredImage={posts.featuredImage}
-        categories={posts.categories}
+        featuredImage={typeof posts.featuredImage === "string" ? null : posts.featuredImage}
+        categories={Array.isArray(posts.categories) ? { edges: [] } : posts.categories}
       />{" "}
       <div className="main-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5">
         <div className="grid lg:grid-cols-4 gap-6">
@@ -154,7 +167,7 @@ export default function Homepage() {
             <ArticleInfo />
             <Contributors author={posts.author} />
             <SidebarAdDownload
-              data={posts.singlePostPage}
+              data={typeof posts.singlePostPage === "object" && posts.singlePostPage !== null ? posts.singlePostPage : {} as SinglePostPage}
               settingData={postSetting}
             />
           </div>

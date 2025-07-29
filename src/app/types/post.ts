@@ -7,10 +7,10 @@ export interface Post {
   content: string;
   excerpt: string;
   date: string;
-  categories: CategoryConnection;
-  tags: TagConnection;
+  categories: CategoryConnection | string[];
+  tags: TagConnection | string[];
   featuredImage: FeaturedImage | string;
-  singlePostPage: SinglePostPage;
+  singlePostPage: SinglePostPage | boolean;
   author: Author;
 }
 

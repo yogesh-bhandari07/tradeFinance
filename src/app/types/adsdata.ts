@@ -69,6 +69,7 @@ const ads: AdBanner[] = [
 ];
 
 export const getAdsForPage = (page: string): AdBanner[] => {
+  console.log(page);
   // In a real implementation, this would filter ads based on page context
   return ads;
 };

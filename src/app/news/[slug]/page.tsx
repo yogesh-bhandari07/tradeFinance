@@ -34,6 +34,9 @@ interface LiveNewsPost extends Post {
   created_at:string;
   updated_at:string;
   author_role:string;
+  featured:boolean;
+  readingTime:number; 
+  summary:string;
 }
 
 interface NewsUpdate {
@@ -78,8 +81,10 @@ const NewsStoryLive = () => {
   const newsData: Record<string, LiveNewsPost> = {
     'us-china-trade-tensions-escalate': {
       id: '1',
+      databaseId: 1,
       title: 'US-China Trade Tensions Escalate as New Sanctions Announced',
       slug: 'us-china-trade-tensions-escalate',
+      uri: '/news/us-china-trade-tensions-escalate',
       post_type: 'article',
       status: 'published',
       featuredImage: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
@@ -115,6 +120,13 @@ const NewsStoryLive = () => {
           lastContribution: '2024-01-28T12:15:00Z'
         }
       ],
+      content: 'Full article content goes here. This is a mock article about US-China trade tensions escalating due to new sanctions.',
+      excerpt: 'US-China trade tensions escalate as new sanctions are announced, impacting technology and financial markets.',
+      categories: ['Trade', 'Economics', 'International Relations'],
+      tags: ['US', 'China', 'Sanctions', 'Technology', 'Markets'],
+      featured: true,
+      readingTime: 7,
+      summary: 'A summary of the escalation in US-China trade tensions and its impact on global markets.',
       updates: [
         {
           id: '1',
@@ -188,7 +200,24 @@ const NewsStoryLive = () => {
           type: 'update',
           content: 'DEVELOPING: Initial reports emerged early this morning of new US trade restrictions targeting Chinese semiconductor and artificial intelligence companies. The restrictions, which sources describe as "the most comprehensive since 2019," appear to focus on companies with alleged ties to military applications. Treasury Department officials confirmed a briefing would be held at 2 PM EST to provide full details. Industry analysts are already warning of significant disruptions to global tech supply chains. "This could affect everything from smartphones to automotive electronics," said technology sector analyst Robert Kim. The targeted companies reportedly include some of China\'s largest chip manufacturers and AI research firms.'
         }
-      ]
+      ],
+      // Add missing properties for LiveNewsPost type
+      date: '2024-01-28T08:00:00Z',
+      singlePostPage: false,
+      author: {
+        node: {
+          id: '1',
+          name: 'Sarah Chen',
+          // role: 'Trade Policy Correspondent',
+          avatar: { url: 'https://images.unsplash.com/photo-1494790108755-2616b332c05b?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80' },
+          databaseId: 0,
+          firstName: '',
+          lastName: '',
+          description: ''
+        }
+      },
+      // expertise: ['Trade Policy', 'US-China Relations', 'Economics'],
+      // lastContribution: '2024-01-28T14:30:00Z'
     }
   };
 
