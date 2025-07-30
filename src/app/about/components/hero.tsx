@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import { Card, CardContent } from "@/shared/components/card";
-import { Users, Globe, ShieldCheck, Zap } from "lucide-react";
+import { Zap } from "lucide-react";
 
 // Accept `data` as props
 export const AboutHero = ({ data }: { data: any }) => {

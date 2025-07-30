@@ -55,10 +55,13 @@ export const AboutReach = ({ data }: AboutReachProps) => {
     return () => clearInterval(timer);
   }, [finalStats.members, finalStats.subscribers, finalStats.countries, finalStats.partners]);
 
+  type StatKey = "members" | "subscribers" | "countries" | "partners";
+  const statKeys: StatKey[] = ["members", "subscribers", "countries", "partners"];
+
   const stats = statsData.map((item: { icon: any; content: any; }, idx: number) => ({
     icon: <span dangerouslySetInnerHTML={{ __html: item.icon }} />,
     label: item.content,
-    value: `${animatedStats[["members", "subscribers", "countries", "partners"][idx]].toLocaleString()}${idx < 2 ? "+" : ""}`,
+    value: `${animatedStats[statKeys[idx]].toLocaleString()}${idx < 2 ? "+" : ""}`,
     color: [
       "text-ttp-orange",
       "text-ttp-green",

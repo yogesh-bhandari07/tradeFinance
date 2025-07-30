@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import { Card, CardContent } from "@/shared/components/card";
 import { TrendingUp, Shield, Network, Target } from "lucide-react";
