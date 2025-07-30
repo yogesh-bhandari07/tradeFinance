@@ -4,7 +4,7 @@ const endpoint =
 const CONTACT = `query GetEditorialBoardUsers { 
  pageBy(uri: \"contact-us\") {    title    slug    content    contactUs {      formHeading      formShortcode      getInTouchHeading      emailHeading      emails      officeAddressHeading      address      responseTimesHeading      responseTimesContent      editorialSubmissionsHeading      editorialSubmissionsContent    }  }}`;
 
-export async function aboutUs() {
+export async function contactPage() {
   const res = await fetch(endpoint, {
     method: "POST",
     headers: {

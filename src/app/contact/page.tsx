@@ -11,7 +11,7 @@ import { Input } from "@/shared/components/input";
 import { Label } from "@/shared/components/label";
 import { Textarea } from "@/shared/components/textarea";
 import { Mail, MapPin, Clock, Send } from "lucide-react";
-import { aboutUs } from "../lib/contactus";
+import { contactPage } from "../lib/contactus";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -22,14 +22,14 @@ const ContactPage = () => {
     message: "",
   });
 
+  const [loading, setLoading] = useState(true);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [contactData, setContactData] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchContactData = async () => {
       try {
-        const res = await aboutUs();
+        const res = await contactPage();
         setContactData(res);
       } catch (err) {
         console.error("Failed to fetch contact data:", err);
