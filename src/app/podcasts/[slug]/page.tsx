@@ -43,12 +43,12 @@ const PodcastDetailPage = () => {
               The podcast episode you are looking for does not exist or has been
               moved.
             </p>
-            <Button asChild>
+            {/* <Button asChild>
               <a href="/podcasts">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Back to Podcasts
               </a>
-            </Button>
+            </Button> */}
           </div>
         </main>
       </div>

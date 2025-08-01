@@ -33,12 +33,12 @@ const VideoDetailPage = () => {
             <p className="text-gray-600 mb-6">
               The video youre looking for doesnt exist or has been moved.
             </p>
-            <Button asChild>
+            {/* <Button asChild>
               <a href="/videos">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Back to Videos
               </a>
-            </Button>
+            </Button> */}
           </div>
         </main>
       </div>
@@ -230,9 +230,9 @@ const VideoDetailPage = () => {
         {/* Breadcrumb */}
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
           <div className="flex items-center gap-2 text-sm text-gray-500">
-            <a href="/videos" className="hover:text-ttp-orange">
+            {/* <a href="/videos" className="hover:text-ttp-orange">
               Videos
-            </a>
+            </a> */}
             <span>/</span>
             <span className="text-ttp-orange">Video Details</span>
           </div>
