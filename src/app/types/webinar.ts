@@ -116,6 +116,108 @@ export const mockPodcasts: Podcast[] = [
     tags: ["Weekly Update", "Global Payments", "CBDC"],
     audioUrl: "#",
   },
+  {
+    id: "3",
+    title: "Weekly Roundup: Global Payment Trends",
+    description:
+      "A quick overview of the week's most important developments in global payments, CBDCs, and regulatory updates.",
+    host: "Emma Rodriguez",
+    duration: "18:32",
+    publishDate: "2024-01-22",
+    episode: 156,
+    season: 3,
+    downloads: "8.9k",
+    category: "news",
+    image:
+      "https://images.unsplash.com/photo-1516414447565-b14be0adf13e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    tags: ["Weekly Update", "Global Payments", "CBDC"],
+    audioUrl: "#",
+  },
+  {
+    id: "4",
+    title: "Weekly Roundup: Global Payment Trends",
+    description:
+      "A quick overview of the week's most important developments in global payments, CBDCs, and regulatory updates.",
+    host: "Emma Rodriguez",
+    duration: "18:32",
+    publishDate: "2024-01-22",
+    episode: 156,
+    season: 3,
+    downloads: "8.9k",
+    category: "news",
+    image:
+      "https://images.unsplash.com/photo-1516414447565-b14be0adf13e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    tags: ["Weekly Update", "Global Payments", "CBDC"],
+    audioUrl: "#",
+  },
+  {
+    id: "5",
+    title: "Weekly Roundup: Global Payment Trends",
+    description:
+      "A quick overview of the week's most important developments in global payments, CBDCs, and regulatory updates.",
+    host: "Emma Rodriguez",
+    duration: "18:32",
+    publishDate: "2024-01-22",
+    episode: 156,
+    season: 3,
+    downloads: "8.9k",
+    category: "news",
+    image:
+      "https://images.unsplash.com/photo-1516414447565-b14be0adf13e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    tags: ["Weekly Update", "Global Payments", "CBDC"],
+    audioUrl: "#",
+  },
+  {
+    id: "6",
+    title: "Weekly Roundup: Global Payment Trends",
+    description:
+      "A quick overview of the week's most important developments in global payments, CBDCs, and regulatory updates.",
+    host: "Emma Rodriguez",
+    duration: "18:32",
+    publishDate: "2024-01-22",
+    episode: 156,
+    season: 3,
+    downloads: "8.9k",
+    category: "news",
+    image:
+      "https://images.unsplash.com/photo-1516414447565-b14be0adf13e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    tags: ["Weekly Update", "Global Payments", "CBDC"],
+    audioUrl: "#",
+  },
+  {
+    id: "7",
+    title: "Weekly Roundup: Global Payment Trends",
+    description:
+      "A quick overview of the week's most important developments in global payments, CBDCs, and regulatory updates.",
+    host: "Emma Rodriguez",
+    duration: "18:32",
+    publishDate: "2024-01-22",
+    episode: 156,
+    season: 3,
+    downloads: "8.9k",
+    category: "news",
+    image:
+      "https://images.unsplash.com/photo-1516414447565-b14be0adf13e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    tags: ["Weekly Update", "Global Payments", "CBDC"],
+    audioUrl: "#",
+  },
+  {
+    id: "8",
+    title: "Weekly Roundup: Global Payment Trends",
+    description:
+      "A quick overview of the week's most important developments in global payments, CBDCs, and regulatory updates.",
+    host: "Emma Rodriguez",
+    duration: "18:32",
+    publishDate: "2024-01-22",
+    episode: 156,
+    season: 3,
+    downloads: "8.9k",
+    category: "news",
+    image:
+      "https://images.unsplash.com/photo-1516414447565-b14be0adf13e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    tags: ["Weekly Update", "Global Payments", "CBDC"],
+    audioUrl: "#",
+  },
 ];
 
 export const mockWebinars: Webinar[] = [
@@ -478,4 +580,10 @@ export const createSlug = (title: string): string => {
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
+};
+
+export const getPodcastBySlug = (slug: string): Podcast | null => {
+  return (
+    mockPodcasts.find((podcast) => createSlug(podcast.title) === slug) || null
+  );
 };
