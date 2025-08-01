@@ -51,12 +51,12 @@ const WebinarPage = () => {
     return webinar.status === filterBy;
   });
 
-  const createSlug = (title: string) => {
-    return title
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/(^-|-$)/g, "");
-  };
+  // const createSlug = (title: string) => {
+  //   return title
+  //     .toLowerCase()
+  //     .replace(/[^a-z0-9]+/g, "-")
+  //     .replace(/(^-|-$)/g, "");
+  // };
 
   return (
     <div className="min-h-screen bg-background">
@@ -145,7 +145,7 @@ const WebinarPage = () => {
             {filteredWebinars.map((webinar) => (
               <Link
                 key={webinar.id}
-                href={`/webinars/${createSlug(webinar.title)}`}
+                href={`/webinardetails`}
                 className={`group cursor-pointer block ${
                   viewMode === "list"
                     ? "flex gap-6 p-6 bg-white rounded-lg border hover:shadow-lg transition-shadow"

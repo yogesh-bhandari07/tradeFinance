@@ -15,16 +15,37 @@ import {
   Play,     
   Headphones,
 } from "lucide-react";
-import { getAllContent } from "@/app/types/webinar";
+import { getAllContentPodcast } from "@/app/types/webinar";
+
+export interface Podcast {
+  id: string;
+  title: string;
+  description: string;
+  host: string;
+  guest: string;
+  duration: string;
+  publishDate: string;
+  episode: number;
+  season: number;
+  downloads: string;
+  category: string;
+  image: string;
+  tags: string[];
+  audioUrl: string;
+  companyId: string;
+  companyName: string;
+}
+
+
 
 const PodcastPage = () => {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [sortBy, setSortBy] = useState("latest");
   const [filterBy, setFilterBy] = useState("all");
 
-  const { podcasts } = getAllContent();
+  const { podcasts } = getAllContentPodcast();
 
-  const filteredPodcasts = podcasts.filter((podcast:any) => {
+  const filteredPodcasts = podcasts.filter((podcast) => {
     if (filterBy === "all") return true;
     return podcast.category === filterBy;
   });

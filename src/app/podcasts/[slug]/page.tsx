@@ -7,18 +7,10 @@ import { usePathname } from "next/navigation";
 import { PodcastSubscriptionCTA } from "@/app/podcasts/components/cta";
 
 import { Button } from "@/shared/components/button";
-import { Badge } from "@/shared/components/badge";
-import { Card, CardContent } from "@/shared/components/card";
 import {
-  Calendar,
-  Clock,
-  User,
-  Download,
-  Play,
   ArrowLeft,
   Headphones,
 } from "lucide-react";
-import { Smartphone, Music,  Rss } from "lucide-react";
 
 import Image from "next/image";
 
@@ -28,7 +20,7 @@ const PodcastDetailPage = () => {
 //   const { podcastSlug } = useParams();
  const pathname = usePathname(); // e.g., "/podcasts/hsbc"
   const segments = pathname.split("/").filter(Boolean);
-  const podcastSlug = segments[1]; // Assuming URL is /podcasts/[slug]
+  const podcastSlug = segments[1]; // Assuming URL is /podcasts/[slug]  
 
   console.log("Current podcast slug:", podcastSlug);
 

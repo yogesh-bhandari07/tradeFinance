@@ -557,6 +557,15 @@ export const getAllContent = () => ({
   editions: mockEditions,
 });
 
+export const getAllContentPodcast = (): AllContent => ({
+  podcasts: mockPodcasts,
+ 
+});
+
+interface AllContent {
+  podcasts: Podcast[];
+}
+
 
 export const getEditionBySlug = (slug: string): Edition | null => {
   console.log("Looking for edition with slug:", slug);
@@ -586,4 +595,8 @@ export const getPodcastBySlug = (slug: string): Podcast | null => {
   return (
     mockPodcasts.find((podcast) => createSlug(podcast.title) === slug) || null
   );
+};
+
+export const getVideoBySlug = (slug: string): Video | null => {
+  return mockVideos.find((video) => createSlug(video.title) === slug) || null;
 };
