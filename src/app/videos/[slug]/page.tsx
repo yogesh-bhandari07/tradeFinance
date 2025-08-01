@@ -1,12 +1,10 @@
 'use client';
 import React from "react";
-import { Button } from "@/shared/components/button";
 import { usePathname } from "next/navigation";
 import Image from 'next/image';
 
 import {
   Play,
-  ArrowLeft,
 } from "lucide-react";
 import { getVideoBySlug } from "@/app/types/webinar";
 

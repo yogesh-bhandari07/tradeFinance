@@ -6,9 +6,7 @@ import { usePathname } from "next/navigation";
 // import { useParams } from "react-router-dom";
 import { PodcastSubscriptionCTA } from "@/app/podcasts/components/cta";
 
-import { Button } from "@/shared/components/button";
 import {
-  ArrowLeft,
   Headphones,
 } from "lucide-react";
 
