@@ -109,7 +109,8 @@ export const PersonalizedHomepage = () => {
     mockPersonalizedContent
   );
   const [contentLoading, setContentLoading] = useState(false);
-
+  console.log(setContentLoading);
+  console.log(setIsSearchExpanded);
   const { preferences, isLoading: preferencesLoading } = usePersonalization();
 
   console.log("PersonalizedHomepage rendering:", {

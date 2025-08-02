@@ -20,7 +20,6 @@ import {
   fetchRelatedPosts,
   fetchArticle,
 } from "../lib/postDetail";
-import Skeleton from "@/shared/components/skeleton";
 
 export default function Homepage() {
 
@@ -111,20 +110,16 @@ export default function Homepage() {
     return (
       <div className="main max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5">
         <div className="h-64 w-full mb-6">
-          <Skeleton className="h-full w-full" />
+          {/* <Skeleton className="h-full w-full" /> */}
         </div>
 
         <div className="grid lg:grid-cols-4 gap-6">
           <div className="lg:col-span-3 space-y-4">
-            <Skeleton className="h-6 w-1/3" />
-            <Skeleton className="h-4 w-2/3" />
-            <Skeleton className="h-96 w-full" />
+          
           </div>
 
           <div className="col-span-1 space-y-4">
-            <Skeleton className="h-48 w-full" />
-            <Skeleton className="h-48 w-full" />
-            <Skeleton className="h-24 w-full" />
+          
           </div>
         </div>
       </div>

@@ -111,20 +111,7 @@ export const Publications = () => {
     },
   ];
 
-  const getCategoryColor = (category: string) => {
-    switch (category) {
-      case "magazine":
-        return "bg-ttp-orange text-white";
-      case "report":
-        return "bg-ttp-purple text-white";
-      case "guide":
-        return "bg-ttp-green text-white";
-      case "research":
-        return "bg-blue-500 text-white";
-      default:
-        return "bg-gray-500 text-white";
-    }
-  };
+ 
 
   const getCategoryIcon = (category: string) => {
     switch (category) {

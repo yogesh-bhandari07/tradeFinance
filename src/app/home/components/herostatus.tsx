@@ -4,6 +4,7 @@ import { TrendingUp } from "lucide-react";
 interface Stat {
   label: string;
   value: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   icon: React.ComponentType<any>;
   trend: string;
 }
